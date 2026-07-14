@@ -21,7 +21,7 @@ There are hundreds of different commands, but don't worry, you only need a handf
 
 ![Command morphology](../images/command_morphology.png)
 
-We will work through some of the most commonly used command to help get you started. 
+We will work through some of the most commonly used commands to help get you started. 
 
 #### Printing text
 
@@ -57,7 +57,7 @@ Let’s try a new command, `mkdir` to **m**a**k**e a new **dir**ectory. A direct
 mkdir new_directory
 ```
 
-Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores “_” or hypens “-“ to separate words. Also avoid special characters such as ‘ ? , ( ) ! & * + - ; etc. 
+Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores “_” or hypens “-“ to separate words. Also avoid special characters such as ‘ ? , ( ) ! & * + ; etc. 
 
 #### List a directory
 
@@ -79,7 +79,7 @@ Let's now look an example of using the `ls` command with the option `-l` which l
 ls -l
 ```
 
-The output should look like this, with one file or directory per line and additional details on the each. A description of the output has been added below.    
+The output should look like this, with one file or directory per line and additional details on each. A description of the output has been added below.    
 
 ![lsl](../images/ls-l.png)
 
@@ -93,7 +93,7 @@ cd new_directory
 
 Note, you can use autocompletion to save time typing. In this example, you would type “new” and then hit the Tab key, and it will autocomplete the directory name to “new_directory”. This technique can save you a lot of time typing, especially for long commands.
 
-If you have changed directory successfully, you will notice that your prompt have change to include you new directory location.
+If you have changed directory successfully, you will notice that your prompt has changed to include your new directory location.
 
 We can also use `pwd` again to check our present working directory. 
 
@@ -155,6 +155,8 @@ ls
 ```
 
 The terminal should look like this: 
+
+![Listing the new text file](../images/PLACEHOLDER_ls_new_file.png)
 
 Now that we have created a new file and can see it is in our working directory, we can print the file to the terminal using `cat`, which stands for con**cat**enate. This command prints the file to the terminal, and it takes the file name as an argument. 
 ```
@@ -223,7 +225,7 @@ However, we should get an error message which say’s we cannot remove `new_dire
 
 But this is no problem. To remove directories, we need to specify a special option. To see all options available for a command we can look at the help information using options `-h` or `--help`. Try the commands below, both will have the same output: 
 ```
-rm -–help
+rm --help
 rm -h
 ```
 
@@ -245,6 +247,8 @@ nano rbcl.fasta
 ```
 
 The nano command takes the name of the file that you want to create or edit as an input argument. When you run the command, the nano text editor will open and will look like this: 
+
+![The nano text editor](../images/PLACEHOLDER_nano_empty.png)
 
 Let’s paste in some sequence information. Below is a fasta file for the rbcL gene in *Arabidopsis thaliana*. Copy this and paste it into the nano text editor. Note, to paste text into a terminal, right click the terminal where you want to paste the text. You can also paste text using the keys "Ctrl + V" in Windows or "Command + V" in Mac.
 ```
@@ -273,6 +277,8 @@ TAACTTCCCAACCATCGATAAATTAGATGGCCAAGAGTAG
 ```
 Once you have pasted the text, it will look like this: 
 
+![The fasta sequence pasted into nano](../images/PLACEHOLDER_nano_pasted.png)
+
 Once we are finished editing, we can save our text file by pressing the keys “Ctrl + o”. 
 
 Nano will ask you if you would like to write the file to “rbcl.fasta”. Hit the Enter key to save to this file. 
@@ -282,8 +288,63 @@ To exit nano, press the keys “Ctrl + x”. To check you changes, you can cat t
 cat rbcl.fasta
 ```
 
-Let’s imagine we wanted to edit the sequence name to something simpler, such as “>arabidopisis_thaliana_rbcl”. To do this, open our file using nano again. 
+Let’s imagine we wanted to edit the sequence name to something simpler, such as “>arabidopsis_thaliana_rbcl”. To do this, open our file using nano again. 
 ```
 nano rbcl.fasta
 ```
 To edit the fasta file, use the cursor keys to move to the first line (your mouse will not work here), and remove the first line by pressing the Delete key and replace with “>arabidopsis_thaliana_rbcl”. It should now look like this:
+
+![Editing the fasta header in nano](../images/PLACEHOLDER_nano_edited_header.png)
+
+As before, save your changes by pressing “Ctrl + o” and hit Enter to confirm the file name. Then exit nano by pressing “Ctrl + x”.
+
+You can check your edit by printing the file to the terminal again:
+```
+cat rbcl.fasta
+```
+
+The sequence header should now read `>arabidopsis_thaliana_rbcl`, while the sequence itself is unchanged.
+
+Congratulations - you have now learned the core commands for working in Linux: printing text, navigating directories, creating and editing files, and cleaning up after yourself. The sections below introduce a few more commands that you will find useful as you become more confident.
+
+#### Getting help for a command
+
+Almost every command comes with built-in documentation. As we saw with `rm`, you can use the `-h` or `--help` option to print a short summary of how to use a command:
+```
+ls --help
+```
+
+For more detailed documentation, use the `man` command (short for **man**ual), which opens the full manual page for a command:
+```
+man ls
+```
+Use the arrow keys to scroll, and press `q` to quit the manual page.
+
+#### Viewing the contents of a file
+
+We have already used `cat` to print an entire file to the terminal. For larger files this can be unwieldy, so the following commands are often more convenient:
+
+- `less rbcl.fasta` - view a file one screen at a time (use the arrow keys to scroll and `q` to quit).
+- `head rbcl.fasta` - print just the first 10 lines of a file.
+- `tail rbcl.fasta` - print just the last 10 lines of a file.
+
+You can change the number of lines shown by `head` or `tail` with the `-n` option, for example `head -n 5 rbcl.fasta`.
+
+#### Using wildcards
+
+When working with lots of files, wildcards let you match several files at once. The most common wildcard is the asterisk `*`, which matches any number of characters. For example, to list all files ending in `.fasta`:
+```
+ls *.fasta
+```
+Or to list every file beginning with `rbcl`:
+```
+ls rbcl*
+```
+
+#### File permissions
+
+When you run `ls -l`, the first column shows the **permissions** of each file or directory, for example `-rw-r--r--`. These describe who is allowed to **r**ead, **w**rite, and e**x**ecute the file. You can change permissions with the `chmod` command. For example, to make a script executable:
+```
+chmod +x myscript.sh
+```
+You will use this later when running your own scripts on an HPC system.

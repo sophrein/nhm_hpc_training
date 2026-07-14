@@ -16,7 +16,7 @@ This guide is for researchers and students at the Natural History Museum who wou
 
 If you would like to contribute tutorial or training material to this page, please see the github repository which has instructions on how to contribute.
 
-[Link to Github](https://github.com/o-william-white/nhm_training){: .btn }
+[Link to Github](https://github.com/nhm-sequencing-facility/nhm_hpc_training){: .btn }
 
 #### Thank you to the all the contributors!
 

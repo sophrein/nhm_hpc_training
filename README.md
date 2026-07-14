@@ -2,7 +2,7 @@
 
 Training material for linux accessing HPC resources at the NHM. 
 
-The webpage is currently hosted [here](https://o-william-white.github.io/nhm_training/) with the long term aim of moving this to the NHM git repo. 
+The webpage is hosted [here](https://nhm-sequencing-facility.github.io/nhm_hpc_training/). 
 
 The webpage is written in [just-the-docs](https://just-the-docs.com/) with all tutorial data in markdown format. 
 
@@ -13,13 +13,13 @@ Here are instructions on how to contribute training material.
 
 ```
 # clone repo
-git clone https://github.com/o-william-white/nhm_training.git
+git clone https://github.com/nhm-sequencing-facility/nhm_hpc_training.git
 
 # change directory
-cd nhm_training
+cd nhm_hpc_training
 
 # create branch, replacing 'test_branch' with a relevant name for you
-git checkout test_branch
+git checkout -b test_branch
 ```
 
 Once you have your own copy of the repo and new branch, you can make changes to the file structure. 

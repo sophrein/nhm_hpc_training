@@ -2,8 +2,8 @@ title: NHM Bioinformatics
 description: Training material for linux and accessing HPC resources at the NHM.
 theme: just-the-docs
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://o-william-white.github.io/nhm_training" # the base hostname & protocol for your site, e.g. http://example.com
-repository: o-william-white/nhm_training # for github-metadata
+url: "https://nhm-sequencing-facility.github.io/nhm_hpc_training" # the base hostname & protocol for your site, e.g. http://example.com
+repository: nhm-sequencing-facility/nhm_hpc_training # for github-metadata
 
 plugins:
   - jekyll-github-metadata

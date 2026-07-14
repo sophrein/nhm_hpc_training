@@ -938,7 +938,7 @@ Additionally, there is an **interactive** partition, that can be used to test co
 
 - [Example 1](#example-1---running-a-job-using-software-installed-with-conda) - Running a job using software installed with conda
 - [Example 2](#example-2---running-a-job-using-software-from-the-shared-software-area) - Running a job using software from the shared software area
-- [Example 3](using-the-job-scheduler.md/#example-3---running-a-job-using-a-singularity-container) - Running a job using a Singularity container
+- [Example 3](#example-3---running-a-job-using-a-singularity-container) - Running a job using a Singularity container
 - [Example 4](#example-4---running-a-job-using-the-gpu) - Running a job using the GPU
 
 <br>

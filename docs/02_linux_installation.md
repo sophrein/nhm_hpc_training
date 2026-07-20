@@ -17,7 +17,7 @@ Run the following command to install WSL (Windows Subsystem for Linux):
 ```
 wsl.exe --install
 ```
-_Note if you are on a museum laptop, you will need to open PowerShell as an Administrator_ (search for "PowerShell" in the Start menu, right-click, and select "Run as administrator").
+_Note: if you are on a museum laptop, you will need to open PowerShell as an Administrator_ (search for "PowerShell" in the Start menu, right-click, and select "Run as administrator").
 
 Once WSL is installed, restart your computer. 
 

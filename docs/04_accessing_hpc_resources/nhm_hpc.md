@@ -24,22 +24,26 @@ NHM provides an HPC cluster accessible to staff. This guide details the primary 
 
 ### Login node
 
-The head node is the node you log into using SSH, and is used to manage files, install software, and submit jobs through the job scheduler (Slurm). The head node is called **hpc-head-002**.
+When you connect to the HPC, you land on the login node (also called the head node), from there you can manage your files, install software, and submit jobs to run on the compute nodes.
 
+The primary login node is called **hpc-jobs-001**. You connect to it using a tool called SSH, which lets you control a remote computer from your own terminal.
+
+If the primary login node is busy, you can connect to the secondary login node `hpc-jobs-002` instead. Both nodes work in exactly the same way, so any instructions that refer to `hpc-jobs-001` apply equally to `hpc-jobs-002`.
+
+{: .note }
+> The login node is shared by all users, avoid running heavy computations directly on it. Use it to prepare and submit jobs instead using the [job scheduler (slurm)](#using-the-job-scheduler-slurm).
 
 ### Compute nodes
 
 The compute nodes are where the actual computations are performed. Jobs are distributed across these nodes to utilize their combined processing power. 
 
-| Hostname     | CPUs | Memory | GPUs                       |               
-|--------------|------|--------|----------------------------| 
-| hpc-cpu-001  | 192  | 2TB    | n/a                        |
-| hpc-cpu-005  | 64   | 64GB   | n/a                        |
-| hpc-cpu-006  | 64   | 192GB  | n/a                        |
-| hpc-cpu-007  | 192  | 2TB    | 2 X Nvidia A2 16GB         |
-| hpc-gpu-001  | 192  | 2TB    | 1 x Nvidia Tesla V100 32GB |
-| hpc-gpu-002  | 192  | 2TB    | 1 x Nvidia Tesla V100 32GB |
-
+| Hostname    | CPUs | Memory | GPUs                        |
+|-------------|------|--------|-----------------------------|
+| hpc-cpu-001 | 192  | 2TB    | n/a                         |
+| hpc-cpu-006 | 64   | 192GB  | n/a                         |
+| hpc-cpu-007 | 192  | 2TB    | 2 x Nvidia A2 16GB          |
+| hpc-cpu-008 | 192  | 2TB    | 1 x Nvidia Tesla V100 32GB  |
+| hpc-cpu-009 | 192  | 2TB    | 1 x Nvidia Tesla V100 32GB  |
 
 ### Requesting access
 
@@ -49,7 +53,7 @@ Email [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) to request acc
 
 Check out the [HPC Users Community](https://teams.microsoft.com/l/channel/19%3A8aa968ad33924f1e9ac3b4a78862eac4%40thread.tacv2/General?groupId=7e89a01f-f1c5-4886-b494-0ac470650c5a>) on Microsoft Teams for assistance from fellow users and cluster admins, as well as the latest news and updates about the cluster. 
 
-You can also contact Technology Solutions via email at [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk).
+You can also contact Technology Solutions via email at [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) and [TS Service Desk Portal](https://nhm-ts.haloitsm.com/portal/home).
 
 ---
 
@@ -63,11 +67,11 @@ Once access is granted, you can log in using an SSH client such as:
 Use your NHM username and password, which are the same credentials you use to log into your NHM computer, if you have one.
 
 {: .note }
-> If you are on an NHM computer (either at the museum or working remotely via VPN), log in directly to the head node hpc-head-002. If you are using a non-NHM computer, you need to connect through the bastion, which is known as **orca**. For detailed instructions on connecting through the orca, click [here](orca.html). 
+> If you are on an NHM computer (either at the museum or working remotely via VPN), log in directly to the head node hpc-jobs-001. If you are using a non-NHM computer, you need to connect through the bastion, which is known as **orca**. For detailed instructions on connecting through the orca, click [here](orca.html). 
 
 ### Using PuTTy
 
-To log in using PuTTy, enter the hostname `hpc-head-002` and select **Open**. 
+To log in using PuTTy, enter the hostname `hpc-jobs-001` and select **Open**. 
 
 ![putty](hpc_images/putty.png)
 
@@ -82,7 +86,7 @@ Pre-authentication banner message from server:
 | ---          ts-servicedesk@nhm.ac.uk                   ---
 | -----------------------------------------------------------
 End of banner message from server
-robtest1234@hpc-head-002's password:
+robtest1234@hpc-jobs-001's password:
 Last login: Thu Feb  6 21:36:12 2025 from 157.140.3.51
 
 --------------------------------------
@@ -96,21 +100,21 @@ https://naturalhistorymuseum.sharepoint.com/:w:/r/sites/HPCCAB/Sha...
 Visit the HPC Users Community on Microsoft Teams:
 https://teams.microsoft.com/l/channel/19%3a8aa968ad33924f1e9ac3b4a...
 
-robtest1234@hpc-head-002:~$
+robtest1234@hpc-jobs-001:~$
 ```
 
 ### Using Terminal
 
-To log in using a terminal, type `ssh <username>@hpc-head-002`. For example:
+To log in using a terminal, type `ssh <username>@hpc-jobs-001`. For example:
 ```
-$ ssh robtest1234@hpc-head-002
+$ ssh robtest1234@hpc-jobs-001
 -----------------------------------------------------------
 ---  This is the Natural History Museum in London, UK.  ---
 ---  If you are not an authorised user GO NO FURTHER !  ---
 ---  If you have problems connecting, contact :         ---
 ---          ts-servicedesk@nhm.ac.uk                   ---
 -----------------------------------------------------------
-robtest1234@hpc-head-002's password:
+robtest1234@hpc-jobs-001's password:
 Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-187-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -119,13 +123,13 @@ Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-187-generic x86_64)
 
 # ...
 
-robtest1234@hpc-head-002:~$
+robtest1234@hpc-jobs-001:~$
 ```
 ---
 
 ## Transferring files
 
-To upload and download data you can use various methods, such as scp, sftp, and rsync. Each method is described below. These instructions assume you are on VPN. If you are not, please see the [orca user guide](orca.md) for instructions on how to transfer files through orca.
+To upload and download data you can use various methods, such as scp, sftp, and rsync. Each method is described below. These instructions assume you are on VPN. If you are not, please see the [orca user guide](orca.html) for instructions on how to transfer files through orca.
 
 - [scp](#scp)
 - [sftp](#sftp)
@@ -134,19 +138,22 @@ To upload and download data you can use various methods, such as scp, sftp, and 
 
 The examples below show how to use these tools from the command line, but you can also use graphical tools, such as WinSCP, FileZilla and Cyberduck.
 
+{: .note }
+> To download files from the cluster run this command in a separate terminal on your **local computer**, not on the HPC (open a new terminal window without logging in to the cluster first.)    
+
 ### scp
 
 To **upload** files or directories from your computer to the cluster:
 
 ```
-scp /path/to/source <username>@hpc-head-002:/path/to/destination
+scp /path/to/source <username>@hpc-jobs-001:/path/to/destination
 ```
 
 For example:
 
 ```
-scp -r myfiles/ robtest1234@hpc-head-002:~/mystuff
-robtest1234@hpc-head-002's password:
+scp -r myfiles/ robtest1234@hpc-jobs-001:~/mystuff
+robtest1234@hpc-jobs-001's password:
 file2                                                            100%    5     0.3KB/s   00:00
 file3                                                            100%    5     0.3KB/s   00:00
 file1                                                            100%    5     0.3KB/s   00:00
@@ -155,7 +162,7 @@ file1                                                            100%    5     0
 
 To **download** from the cluster to your computer:
 ```
-scp -r <username>@hpc-head-002:/path/to/source /path/to/destination
+scp -r <username>@hpc-jobs-001:/path/to/source /path/to/destination
 ```
 
 For example:
@@ -165,16 +172,16 @@ robtest1234@hpc-jobs-001's password:
 file3                                                            100%    5     0.1KB/s   00:00
 file2                                                            100%    5     0.1KB/s   00:00
 file1                                                            100%    5     0.1KB/s   00:00
-```    
+```
 
 ### sftp
 
 To **upload** files or directories from your computer to the cluster, use the `put` option. For example:
 
 ```
-sftp robtest1234@hpc-head-002
-robtest1234@hpc-head-002's password:
-Connected to hpc-head-002.
+sftp robtest1234@hpc-jobs-001
+robtest1234@hpc-jobs-001's password:
+Connected to hpc-jobs-001.
 sftp> put -r myfiles/
 Uploading myfiles/ to /home/robtest1234/myfiles
 Entering myfiles/
@@ -186,9 +193,9 @@ sftp> exit
 
 To **download** files or directories from the cluster to your computer, use the `get` option. For example:
 ```
-sftp robtest1234@hpc-head-002
-robtest1234@hpc-head-002's password:
-Connected to hpc-head-002.
+sftp robtest1234@hpc-jobs-001
+robtest1234@hpc-jobs-001's password:
+Connected to hpc-jobs-001.
 sftp> get -r mystuff
 Fetching /home/robtest1234/mystuff/ to mystuff
 Retrieving /home/robtest1234/mystuff
@@ -202,19 +209,19 @@ sftp> exit
 
 To **upload** files or directories from your computer to the cluster:
 ```
-rsync -avP /path/to/source <username>@hpc-head-002:/path/to/destination
+rsync -avP /path/to/source <username>@hpc-jobs-001:/path/to/destination
 ```
 
 For example:
 ```
-rsync -avP mystuff robtest1234@hpc-head-002:~/somedir
+rsync -avP mystuff robtest1234@hpc-jobs-001:~/somedir
 -----------------------------------------------------------
 ---  This is the Natural History Museum in London, UK.  ---
 ---  If you are not an authorised user GO NO FURTHER !  ---
 ---  If you have problems connecting, contact :         ---
 ---          ts-servicedesk@nhm.ac.uk                   ---
 -----------------------------------------------------------
-robtest1234@hpc-head-002's password:
+robtest1234@hpc-jobs-001's password:
 sending incremental file list
 mystuff/
 mystuff/file1
@@ -230,19 +237,19 @@ total size is 15  speedup is 0.04
 
 To **download** files or directories from the cluster to your computer:
 ```
-rsync -avP  <username>@hpc-head-002:/path/to/source /path/to/destination
+rsync -avP  <username>@hpc-jobs-001:/path/to/source /path/to/destination
 ```
 
 For example:
 ```
-rsync -avP robtest1234@hpc-head-002:~/somedir/mystuff .
+rsync -avP robtest1234@hpc-jobs-001:~/somedir/mystuff .
 -----------------------------------------------------------
 ---  This is the Natural History Museum in London, UK.  ---
 ---  If you are not an authorised user GO NO FURTHER !  ---
 ---  If you have problems connecting, contact :         ---
 ---          ts-servicedesk@nhm.ac.uk                   ---
 -----------------------------------------------------------
-robtest1234@hpc-head-002's password:
+robtest1234@hpc-jobs-001's password:
 receiving incremental file list
 mystuff/
 mystuff/file1
@@ -336,14 +343,21 @@ getting file \share\workspaces\groups\rob-project-2\myfile.txt of size 0 as myfi
 smb: \share\workspaces\groups\rob-project-2\> exit
 ```
 
+| Method | Best for | Requires command line |
+|--------|----------|-----------------------|
+| scp    | Simple one-off transfers of files or folders | Yes |
+| sftp   | Browsing the cluster filesystem interactively while transferring files | Yes |
+| rsync  | Large transfers or syncing folders � only copies files that have changed | Yes |
+| smb    | Accessing cluster storage like a network drive via File Explorer or Finder | No - though it can also be accessed via command line |
+
 ---
 
 ## Data storage
 
 - Home folders are found in `/home`
-- Important project data should be stored in `/workspaces/groups`
-- For temporary storage needed during job execution use `/mbl/share/scratch`
-- Shared software for use by anyone can be stored in `/software`  
+- Important project data should be stored in `/hpc/groups`
+- For temporary storage needed during job execution use `/hpc/scratch`
+- Shared software for use by anyone can be stored in `/software`
 
 ### Home folders
 
@@ -359,15 +373,8 @@ When you log in, you'll be in your home directory, a personal area only you can 
 
 ### Group/project folders
 
-- **Paths**:<br>
-
-  The groups folder can be accessed via any of these symlinks:
-
-  - `/workspaces/groups`
-  - `/mbl/share/workspaces/groups`   
-  - `/gpfs/nhmfsa/bulk/share/data/mbl/share/workspaces/groups`
-
-- **Backed up**: every 1-2 days
+- **Path**:`/hpc/groups`
+- **Backed up**: Daily
 - **Quota**: 2TB
 - **Used for**:
 
@@ -388,7 +395,7 @@ It's best to store your important work here. If you need a new folder for your p
   - `/mbl/share/software`  
   - `/gpfs/nhmfsa/bulk/share/data/mbl/share/software`
 
-- **Backed up**: every 1-2 days
+- **Backed up**: Every 1-2 days
 - **Quota**: None
 - **Used for**:
 
@@ -397,7 +404,7 @@ It's best to store your important work here. If you need a new folder for your p
 
 ### Scratch space
 
-- **Path**: `/mbl/share/scratch`
+- **Path**: `/hpc/scratch`
 - **Backed up**: never
 - **Quota**: None
 - **Used for**:
@@ -422,12 +429,12 @@ You can install software in the following locations:
 
 Each method has pros and cons as described below.
 
-| Location             | Pros                       | Cons                       |
-|----------------------|----------------------------|----------------------------|
-| Home folder          |<ul><li>Easy to do using tools like Conda</li><li>Only accessible by you, so anything you install won't affect other users</li></ul>|<ul><li>Space in your home folder is limited to 50GB|
-| Singularity image    |<ul><li>An isolated environment where you can install all the dependencies you need</li><li>A consistent and reproducible software environment</li><li>Portable - you can transfer the image to your own computer or other HPC clusters</li><li>Shareable - other users can use the image as well (provided the image file is in a shared location, like a group workspace)|<ul><li>Learning curve to creating the image and running the container|
-| Shared software area |<ul><li>No limits on space</li><li>Other users can also use the software|<ul><li>You must compile the software, so it's more complicated and takes longer</li><li>It can be difficult to do if the software requires a lot of dependencies|
-         
+| Location             | Pros                                                                                                                                                              | Cons                                                                                                                        |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Home folder          | Easy to do using tools like Conda. Only accessible by you, so anything you install won't affect other users.                                                      | Space is limited to 50GB.                                                                                                   |
+| Singularity image    | An isolated environment with all the dependencies you need. Consistent and reproducible. Portable across computers and HPC clusters. Shareable with other users.   | Learning curve to creating the image and running the container.                                                             |
+| Shared software area | No limits on space. Other users can also use the software.                                                                                                        | You must compile the software, which is more complicated and takes longer. Can be difficult if the software has many dependencies. |      
+
 ### In your home folder
 
 The easiest method of installing software is in your home folder. To do this you can use something like Conda, as described below.
@@ -436,7 +443,7 @@ The easiest method of installing software is in your home folder. To do this you
 
 You can download Conda from [here](https://docs.conda.io/en/latest/miniconda.html). Follow the instructions below to install it.
 
-On hpc-head-002, change into your home folder:
+On hpc-jobs-001, change into your home folder:
 
 ```
 cd ~
@@ -462,20 +469,20 @@ Install Miniconda:
 
 For example:
 ```
-robtest1234@hpc-head-002:~$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+robtest1234@hpc-jobs-001:~$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 --2025-04-22 08:25:48--  https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 Resolving repo.anaconda.com (repo.anaconda.com)... 104.16.32.241, 104.16.191.158, 2606:4700::6810:20f1, ...
 Connecting to repo.anaconda.com (repo.anaconda.com)|104.16.32.241|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 154615621 (147M) [application/octet-stream]
-Saving to: ‘Miniconda3-latest-Linux-x86_64.sh’
+Saving to: 'Miniconda3-latest-Linux-x86_64.sh'
 
 Miniconda3-latest-Linux-x86_64.sh 100%[==========================================================>] 147.45M  43.8MB/s    in 3.4s
 
-2025-04-22 08:26:04 (42.9 MB/s) - ‘Miniconda3-latest-Linux-x86_64.sh’ saved [154615621/154615621]
+2025-04-22 08:26:04 (42.9 MB/s) - 'Miniconda3-latest-Linux-x86_64.sh' saved [154615621/154615621]
 
-robtest1234@hpc-head-002:~$ chmod +x Miniconda3-latest-Linux-x86_64.sh
-robtest1234@hpc-head-002:~$ ./Miniconda3-latest-Linux-x86_64.sh
+robtest1234@hpc-jobs-001:~$ chmod +x Miniconda3-latest-Linux-x86_64.sh
+robtest1234@hpc-jobs-001:~$ ./Miniconda3-latest-Linux-x86_64.sh
 
 Welcome to Miniconda3 py312_25.1.1-2
 
@@ -492,7 +499,7 @@ Answer yes to any questions, accept the default options, and wait for the instal
 ```
 You should see `(base)` in front of your prompt. This shows that Conda has been installed. For example:
 ```
-(base) robtest1234@hpc-head-002:~$
+(base) robtest1234@hpc-jobs-001:~$
 ```
 
 #### Installing software with conda
@@ -507,7 +514,7 @@ conda create -n r-environment r-essentials r-base
 
 For example:
 ```
-(base) robtest1234@hpc-head-002:~$ conda create -n r-environment r-essentials r-base
+(base) robtest1234@hpc-jobs-001:~$ conda create -n r-environment r-essentials r-base
 Retrieving notices: done
 Channels:
  - conda-forge
@@ -528,8 +535,8 @@ conda activate r-environment
 
 For example:
 ```
-(base) robtest1234@hpc-head-002:~$ conda activate r-environment
-(r-environment) robtest1234@hpc-head-002:~$
+(base) robtest1234@hpc-jobs-001:~$ conda activate r-environment
+(r-environment) robtest1234@hpc-jobs-001:~$
 ```
 
 You can use the `which` command to check that R is indeed installed in your home directory:
@@ -540,7 +547,7 @@ which R
 
 For example:
 ```
-(r-environment) robtest1234@hpc-head-002:~$ which R
+(r-environment) robtest1234@hpc-jobs-001:~$ which R
 /home/robtest1234/miniconda3/envs/r-environment/bin/R
 ```
 
@@ -552,7 +559,7 @@ R
 
 Example:
 ```
-(r-environment) robtest1234@hpc-head-002:~$ R
+(r-environment) robtest1234@hpc-jobs-001:~$ R
 
 R version 4.4.3 (2025-02-28) -- "Trophy Case"
 Copyright (C) 2025 The R Foundation for Statistical Computing
@@ -683,15 +690,15 @@ Apptainer>
 
 Now that you've built your image you can upload it to the HPC cluster using sftp or scp. For example:
 ```
-robtest1234@hpc-sw-003:~/bwa$ sftp hpc-head-002
+robtest1234@hpc-sw-003:~/bwa$ sftp hpc-jobs-001
 -----------------------------------------------------------
 ---  This is the Natural History Museum in London, UK.  ---
 ---  If you are not an authorised user GO NO FURTHER !  ---
 ---  If you have problems connecting, contact :         ---
 ---          ts-servicedesk@nhm.ac.uk                   ---
 -----------------------------------------------------------
-robtest1234@hpc-head-002's password:
-Connected to hpc-head-002.
+robtest1234@hpc-jobs-001's password:
+Connected to hpc-jobs-001.
 sftp> put bwa.sif
 Uploading bwa.sif to /gpfs/nhmfsa/bulk/share/data/mbl/share/workspaces/users/robtest1234/bwa.sif
 bwa.sif                                                                                   100%   76MB  16.6MB/s   00:04
@@ -722,16 +729,16 @@ Writing manifest to image destination
 INFO:    Creating SIF file...
 ```
 
-This will create an image file ending in `.sif`. Then you can upload it to hcp-head-002 as described in the previous section.
+This will create an image file ending in `.sif`. Then you can upload it to hpc-jobs-001 as described in the previous section.
 
 ### In the shared software area
 
 If you install software in the shared software area, it means other users can also use it. There are two shared software locations, as described below.
 
-| Location              | Description                                                                                                              |
-|-----------------------|--------------------------------------------------------------------------------------------------------------------------|
-| ``/software/testing`` | <ul><li>Anyone can install software here.<li>It is useful for testing and trying out new software installations.             |        
-| ``/software/common``  | <ul><li>Only superusers can install software here.<li>It is intended for software that has been tested and is known to work. |
+| Location              | Description                                                                                     |
+|-----------------------|-------------------------------------------------------------------------------------------------|
+| `/software/testing`   | Anyone can install software here. Useful for testing and trying out new software installations. |
+| `/software/common`    | Only superusers can install software here. Intended for software that has been tested and is known to work. |
 
 You can check which software has already been installed in the shared software area:
 
@@ -741,7 +748,7 @@ ml avail
 
 For example:
 ```
-robtest1234@hpc-head-002:~$ ml avail
+robtest1234@hpc-jobs-001:~$ ml avail
 
 ------------------------------------------------- /software/common/lmod/lmod/modulefiles/Core --------------------------------------------------
    bcl2fastq/2.2.0             diamond/0.9.31  (D)    java/8.211              minimap2/2.16         python/3.7.bkp
@@ -764,7 +771,7 @@ robtest1234@hpc-head-002:~$ ml avail
 
 You can use the `ml spider` command for more detail:
 ```
-robtest1234@hpc-head-002:~$ ml spider
+robtest1234@hpc-jobs-001:~$ ml spider
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 The following is a list of the modules currently available:
@@ -796,7 +803,7 @@ For example:
 ml python/3.7
 ```
 
-When you go to the folders `/software/testing` or `/software/common`, you may find more names, but if they do not appear when you run any of the commands above, they haven’t been properly installed. 
+When you go to the folders `/software/testing` or `/software/common`, you may find more names, but if they do not appear when you run any of the commands above, they haven't been properly installed. 
 
 #### Example of installing shared software
 
@@ -863,7 +870,7 @@ prepend_path("PATH", pathJoin(base, "bin"))
 
 You can now see your new software is available for use by typing `ml --ignore-cache avail adapterremoval` (you can also see there is an older version 2.3.1 available, which is fine &ndash; it means users can use either version):
 ```
-robtest1234@hpc-head-002:~$ ml --ignore-cache avail adapterremoval
+robtest1234@hpc-jobs-001:~$ ml --ignore-cache avail adapterremoval
 
 ------------------------------------------------ /software/testing/modulefiles/Core -------------------------------------------------
    adapterremoval/2.3.1    adapterremoval/2.3.2    adapterremoval/2.3.4 (D)
@@ -883,13 +890,13 @@ ml adapterremoval/2.3.4
 
 You can check that it's loaded by typing `which AdapterRemoval`:
 ```
-robtest1234@hpc-head-002:~$ which AdapterRemoval
+robtest1234@hpc-jobs-001:~$ which AdapterRemoval
 /software/testing/adapterremoval/2.3.4/x86_64/bin/AdapterRemoval
 ```
 
 Finally, you can run the software:
 ```
-robtest1234@hpc-head-002:~$ AdapterRemoval
+robtest1234@hpc-jobs-001:~$ AdapterRemoval
 AdapterRemoval ver. 2.3.4
 
 This program searches for and removes remnant adapter sequences from
@@ -899,7 +906,7 @@ man page.  For comments, suggestions and feedback please use
 https://github.com/MikkelSchubert/adapterremoval/issues/new
 ```
 
-If at some point you want to install a newer version of the software, you don’t need to delete the old one (actually it can be useful to have both). You can install the new version in the same folder, for example:
+If at some point you want to install a newer version of the software, you don't need to delete the old one (actually it can be useful to have both). You can install the new version in the same folder, for example:
 ```
 mkdir -p /software/testing/adapterremoval/3.0.0/{src,x86_64/bin}
 ```
@@ -918,7 +925,9 @@ ml adapterremoval/3.0.0
 
 ## Using the job scheduler (Slurm)
 
-Now you have all the files and programs you need, but there's a problem: lots of people are running huge data analyses simultaneously. That's why job scheduling systems have been developed: to ensure a fair distribution of the computing resources across all users and to allow the cluster administrators to manage such resources. HPC uses a standard open-source job scheduling system called Slurm. A [complete user guide](https://slurm.schedmd.com/tutorials.html) can be found on their website and ideally you should become familiar with it. 
+Now you have all the files and programs you need, but there's a problem: lots of people are running huge data analyses simultaneously. That's why job scheduling systems have been developed: to ensure a fair distribution of the computing resources across all users and to allow the cluster administrators to manage such resources. HPC uses a standard open-source job scheduling system called Slurm. A [user guide](https://slurm.schedmd.com/quickstart.html) can be found on their website and ideally you should become familiar with it.
+
+A **job** is a script containing the commands you want to run, submitted to Slurm so it can schedule and execute it on a compute node.
 
 ### Partitions/queues explained
 
@@ -956,7 +965,7 @@ The first step is to create a file that contains all the instructions for the jo
 #SBATCH -c 2
 #SBATCH -e /home/robtest1234/demo/test2/job.%J.err
 #SBATCH -o /home/robtest1234/demo/test2/job.%J.out
-#SBATCH -w hpc-gpu-002
+#SBATCH -w hpc-cpu-008
 #SBATCH --mail-user=robtest1234@nhm.ac.uk
 #SBATCH --mail-type=ALL
 
@@ -1017,12 +1026,12 @@ sbatch <script_name>
 
 For example:
 ```
-robtest1234@hpc-head-002:~/demo/test2$ sbatch slurm_script.sh
+robtest1234@hpc-jobs-001:~/demo/test2$ sbatch slurm_script.sh
 Submitted batch job 965216
 ```
 
 {: .note }
-> If your analysis produces intermediate files between steps, you should set up a scratch folder for temporary files in `/mbl/share/scratch`. Ideally, clean up after your job. Scratch is set to auto-delete files after 21 days.
+> If your analysis produces intermediate files between steps, you should set up a scratch folder for temporary files in `/hpc/scratch`. Ideally, clean up after your job. Scratch is set to auto-delete files after 21 days.
 
 <br>
 
@@ -1072,8 +1081,8 @@ Here is another sample job, this time using a Singularity container. Note the us
 #SBATCH -o /home/robtest1234/demo/test3/job.%J.out
 
 singularity run \
---bind /workspaces/groups/rob-project-2:/mnt \
-/workspaces/groups/singularity-images/audiowaveform/1.7.0/audiowaveform.sif \
+--bind /hpc/groups/rob-project-2:/mnt \
+/hpc/groups/singularity-images/audiowaveform/1.7.0/audiowaveform.sif \
 audiowaveform --version
 ```
 
@@ -1087,14 +1096,14 @@ By default, Singularity can only access data in your home folder. However, you c
 --bind /path/on/host:/path/in/container 
 ```
 
-This would be useful if, for example, the job needed to read or write data in the `/workspaces/groups/rob-project-2` folder:
+This would be useful if, for example, the job needed to read or write data in the `/hpc/groups/rob-project-2` folder:
 
 ```
---bind /workspaces/groups/rob-project-2:/mnt
+--bind /hpc/groups/rob-project-2:/mnt
 ```
 This line refers to the location of the singularity image:
 ```
-/workspaces/groups/singularity-images/audiowaveform/1.7.0/audiowaveform.sif
+/hpc/groups/singularity-images/audiowaveform/1.7.0/audiowaveform.sif
 ```
 
 This is the application or command that we want to execute inside the container:
@@ -1105,6 +1114,17 @@ audiowaveform --version
 <br>
 
 #### Example 4 - Running a job using the GPU
+
+The cluster has four GPUs in total:
+
+- 2 x NVIDIA Tesla V100 32GB
+- 2 x NVIDIA A2 16GB
+
+By default, using `--gres=gpu` will allocate any available GPU. If your job requires a specific GPU type, you can request one using the `--gres` flag � contact [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) for the exact options.
+
+```
+#SBATCH --gres=gpu
+```
 
 Here is a sample job that makes use of the GPU. Note that only one GPU job per node can run per at a time &ndash; if someone else's job is using the GPU, your job will wait in the queue until theirs is finished.
 
@@ -1122,16 +1142,13 @@ Here is a sample job that makes use of the GPU. Note that only one GPU job per n
 #SBATCH --mail-type=ALL
 
 singularity run --nv \
-/workspaces/groups/singularity-images/biomedisa/23.01.1/biomedisa.sif \
+/hpc/groups/singularity-images/biomedisa/23.01.1/biomedisa.sif \
 python3 /biomedisa/biomedisa_features/pycuda_test.py
 ```
-
-This line is required to allow Slurm to access the GPU:
-```
-#SBATCH --gres=gpu
-```
-
 Like [Example 3](#example-3---running-a-job-using-a-singularity-container), this job runs in a Singularity container. The `--nv` option is necessary to allow Singularity to access the GPU.
+
+{: .note }
+> Only one GPU job can run per GPU at a time. If all GPUs are in use, your job will wait in the queue until one becomes available.
 
 ### Viewing and managing your jobs
 
@@ -1142,10 +1159,10 @@ squeue -l
 
 For example:
 ```
-robtest1234@hpc-head-002:~$ squeue -l
+robtest1234@hpc-jobs-001:~$ squeue -l
 Tue Apr 22 13:10:03 2025
              JOBID PARTITION     NAME     USER    STATE       TIME TIME_LIMI  NODES NODELIST(REASON)
-            965037       day 11-ancIB   alexs4  RUNNING    1:31:05 1-00:00:00      1 hpc-gpu-002
+            965037       day 11-ancIB   alexs4  RUNNING    1:31:05 1-00:00:00      1 hpc-cpu-008
             965226       day snakejob   danip3  RUNNING      29:19 1-00:00:00      1 hpc-cpu-001
             965227       day snakejob   danip3  RUNNING      29:07 1-00:00:00      1 hpc-cpu-001
             965230       day snakejob   danip3  RUNNING      27:05 1-00:00:00      1 hpc-cpu-001
@@ -1153,13 +1170,13 @@ Tue Apr 22 13:10:03 2025
             965275       day snakejob   danip3  RUNNING       0:02 1-00:00:00      1 hpc-cpu-001
           915974_4     month 2-aDNA_P   alexs4  RUNNING 7-07:54:29 30-00:00:00      1 hpc-cpu-001
             954429     month raxml_ng    beatl  RUNNING 8-16:32:45 30-00:00:00      1 hpc-cpu-001
-          957954_4     month EAGenome   amelr1  RUNNING 7-19:08:15 30-00:00:00      1 hpc-gpu-002
-            963590     month ALLSAMPL   amelr1  RUNNING 4-19:48:48 30-00:00:00      1 hpc-gpu-002
-            963605     month ONLY3XCo   amelr1  RUNNING 4-19:46:39 30-00:00:00      1 hpc-gpu-002
+          957954_4     month EAGenome   amelr1  RUNNING 7-19:08:15 30-00:00:00      1 hpc-cpu-008
+            963590     month ALLSAMPL   amelr1  RUNNING 4-19:48:48 30-00:00:00      1 hpc-cpu-008
+            963605     month ONLY3XCo   amelr1  RUNNING 4-19:46:39 30-00:00:00      1 hpc-cpu-008
             964163     month 3-parall   alexs4  RUNNING 3-04:31:30 30-00:00:00      1 hpc-cpu-006
             964249     month 4-parall   alexs4  RUNNING 2-07:02:27 30-00:00:00      1 hpc-cpu-006
-            964294      week unicycle    larav  RUNNING 1-13:06:46 6-21:00:00      1 hpc-gpu-002
-            964295      week unicycle    larav  RUNNING 1-13:03:04 6-21:00:00      1 hpc-gpu-002
+            964294      week unicycle    larav  RUNNING 1-13:06:46 6-21:00:00      1 hpc-cpu-008
+            964295      week unicycle    larav  RUNNING 1-13:03:04 6-21:00:00      1 hpc-cpu-008
             964296      week unicycle    larav  RUNNING 1-13:01:30 6-21:00:00      1 hpc-cpu-001
             964738      week mge_fast   danip3  RUNNING    3:14:39 7-00:00:00      1 hpc-cpu-006
             964739      week solver.s    zekuw  RUNNING    3:12:22 7-00:00:00      1 hpc-cpu-006
@@ -1172,7 +1189,7 @@ scontrol show jobid <job_id>
 
 For example:
 ```
-robtest1234@hpc-head-002:~/demo/test4$ scontrol show jobid 965279
+robtest1234@hpc-jobs-001:~/demo/test4$ scontrol show jobid 965279
 JobId=965279 JobName=rob-biomedisa
    UserId=robtest1234(1399642667) GroupId=domain users(1399600513) MCS_label=N/A
    Priority=4294715614 Nice=0 Account=core_research_labs QOS=normal
@@ -1183,10 +1200,10 @@ JobId=965279 JobName=rob-biomedisa
    AccrueTime=2025-04-22T13:11:19
    StartTime=2025-04-22T13:11:19 EndTime=2025-04-22T13:11:23 Deadline=N/A
    SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-04-22T13:11:19 Scheduler=Main
-   Partition=hour AllocNode:Sid=hpc-head-002:1996908
+   Partition=hour AllocNode:Sid=hpc-jobs-001:1996908
    ReqNodeList=(null) ExcNodeList=(null)
-   NodeList=hpc-gpu-002
-   BatchHost=hpc-gpu-002
+   NodeList=hpc-cpu-008
+   BatchHost=hpc-cpu-008
    NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
    TRES=cpu=2,node=1,billing=2
    Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
@@ -1210,36 +1227,36 @@ sacct --format=User,JobID,Jobname,partition,state,time,start,end,elapsed,MaxRss,
 
 For example:
 ```
-robtest1234@hpc-head-002:~$ sacct --format=User,JobID,Jobname,partition,state,time,start,end,elapsed,MaxRss,MaxVMSize,nnodes,ncpus,nodelist -j 965279
+robtest1234@hpc-jobs-001:~$ sacct --format=User,JobID,Jobname,partition,state,time,start,end,elapsed,MaxRss,MaxVMSize,nnodes,ncpus,nodelist -j 965279
      User JobID           JobName  Partition      State  Timelimit               Start                 End    Elapsed     MaxRSS  MaxVMSize   NNodes      NCPUS        NodeList
 --------- ------------ ---------- ---------- ---------- ---------- ------------------- ------------------- ---------- ---------- ---------- -------- ---------- ---------------
-robtest1+ 965279       rob-biome+       hour  COMPLETED   01:00:00 2025-04-22T13:11:19 2025-04-22T13:11:23   00:00:04                              1          2     hpc-gpu-002
-          965279.batch      batch             COMPLETED            2025-04-22T13:11:19 2025-04-22T13:11:23   00:00:04      2484K    143144K        1          2     hpc-gpu-002
+robtest1+ 965279       rob-biome+       hour  COMPLETED   01:00:00 2025-04-22T13:11:19 2025-04-22T13:11:23   00:00:04                              1          2     hpc-cpu-008
+          965279.batch      batch             COMPLETED            2025-04-22T13:11:19 2025-04-22T13:11:23   00:00:04      2484K    143144K        1          2     hpc-cpu-008
 ```
 
 You can use `sinfo -l` to check that status of the cluster nodes. For example:
 ```
-(base) robtest1234@hpc-head-002:~$ sinfo -l
+(base) robtest1234@hpc-jobs-001:~$ sinfo -l
 Wed May 07 10:01:34 2025
 PARTITION   AVAIL  TIMELIMIT   JOB_SIZE ROOT OVERSUBS     GROUPS  NODES       STATE NODELIST
-month          up 30-00:00:0 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+month          up 30-00:00:0 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 month          up 30-00:00:0 1-infinite   no       NO        all      1   allocated hpc-cpu-006
-week           up 7-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+week           up 7-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 week           up 7-00:00:00 1-infinite   no       NO        all      1   allocated hpc-cpu-006
-day*           up 1-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+day*           up 1-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 day*           up 1-00:00:00 1-infinite   no       NO        all      1   allocated hpc-cpu-006
-hour           up    1:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+hour           up    1:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 hour           up    1:00:00 1-infinite   no       NO        all      1   allocated hpc-cpu-006
-sip            up 30-00:00:0 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+sip            up 30-00:00:0 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 sip            up 30-00:00:0 1-infinite   no       NO        all      1   allocated hpc-cpu-006
 sip            up 30-00:00:0 1-infinite   no       NO        all      1        idle hpc-cpu-005
-gpu            up 30-00:00:0 1-infinite   no       NO        all      1    drained* hpc-gpu-001
-galaxy         up 30-00:00:0 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+gpu            up 30-00:00:0 1-infinite   no       NO        all      1    drained* hpc-cpu-009
+galaxy         up 30-00:00:0 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 galaxy         up 30-00:00:0 1-infinite   no       NO        all      1   allocated hpc-cpu-006
-interactive    up 1-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+interactive    up 1-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 interactive    up 1-00:00:00 1-infinite   no       NO        all      1   allocated hpc-cpu-006
-ts             up 1-00:00:00 1-infinite   no       NO        all      1    drained* hpc-gpu-001
-ts             up 1-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-gpu-002
+ts             up 1-00:00:00 1-infinite   no       NO        all      1    drained* hpc-cpu-009
+ts             up 1-00:00:00 1-infinite   no       NO        all      2       mixed hpc-cpu-001,hpc-cpu-008
 ts             up 1-00:00:00 1-infinite   no       NO        all      1   allocated hpc-cpu-006
 ts             up 1-00:00:00 1-infinite   no       NO        all      1        idle hpc-cpu-005
 ```
@@ -1247,9 +1264,9 @@ ts             up 1-00:00:00 1-infinite   no       NO        all      1        i
 In the example above we can see the following:
 
 - hpc-cpu-006 is in an **allocated** state, meaning it is fully utilized and cannot accept new jobs until the current ones are finished.
-- hpc-cpu-001 and hpc-gpu-002 are in a **mixed** state, meaning they are running some jobs, but have free capacity to run more jobs.
-- hpc-cpu-005 is in an **idle** state, meaning it is not currently running any jobs, and is ready to receive new jobs. 
-- hpc-gpu-001 is in a **drained** state, meaning it is down for maintenance and cannot accept new jobs.
+- hpc-cpu-001 and hpc-cpu-008 are in a **mixed** state, meaning they are running some jobs, but have free capacity to run more jobs.
+- hpc-cpu-005 is in an **idle** state, meaning it is not currently running any jobs, and is ready to receive new jobs.
+- hpc-cpu-009 is in a **drained** state, meaning it is down for maintenance and cannot accept new jobs.
 
 You can cancel your running job with `scancel <job_id>`. For example:
 ```
@@ -1258,11 +1275,11 @@ scancel 965310
 
 Look at your own jobs in the queue with `squeue -u <username>`. For example: 
 ```
-robtest1234@hpc-head-002:~/demo/test4$ squeue -u robtest1234
+robtest1234@hpc-jobs-001:~/demo/test4$ squeue -u robtest1234
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
             965321      hour rob-biom robtest1 PD       0:00      1 (Resources)
             965322      hour rob-biom robtest1 PD       0:00      1 (Priority)
-            965320      hour rob-biom robtest1  R       0:02      1 hpc-gpu-002
+            965320      hour rob-biom robtest1  R       0:02      1 hpc-cpu-008
 ```
 
 ---

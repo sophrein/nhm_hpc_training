@@ -17,7 +17,9 @@ nav_order: 4
 ---
 
 ## What is Orca?
-Most NHM servers are inaccessible from outside the NHM network unless you are connected to the VPN on an NHM laptop. Orca serves as a bastion server, providing a solution to this issue.
+Most NHM servers are inaccessible from outside the NHM network unless you are connected to the VPN on an NHM laptop. Orca provides a solution to this issue.
+
+SSH (Secure Shell) is a protocol for securely connecting to a remote computer from your terminal. Most NHM servers are inaccessible from outside the NHM network unless you are connected to the VPN on an NHM laptop. Orca acts as a bastion server, a secure gateway that allows you to reach internal NHM servers from outside the network.
 
 To connect to Orca, use an SSH client such as PuTTy or Terminal. Once connected, you can access servers within the NHM network, such as:
 
@@ -32,7 +34,7 @@ To connect to Orca, use an SSH client such as PuTTy or Terminal. Once connected,
 Access to Orca must be granted by Technology Solutions. Email [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) to request access.
 
 {: .note }
-> If youâ€™re using an NHM computer, you don't need to use Orca â€“ use VPN instead.
+> If you're using an NHM computer, you don't need to use Orca — use VPN instead.
  
 ---
 
@@ -103,27 +105,27 @@ robtest1234@ssh-bastion-6:~$
 
 ### Connect to other servers via Orca
 
-From Orca you can connect to other servers such as Franklin, Sanger, or hpc-head-002.
+From Orca you can connect to other servers such as Franklin, Sanger, or hpc-jobs-001.
 
-For example, to connect to hpc-head-002 you would type `ssh hpc-head-002` and enter your password. For example:
+For example, to connect to hpc-jobs-001 you would type `ssh hpc-jobs-001` and enter your password. For example:
 
 ```
-robtest1234@ssh-bastion-6:~$ ssh hpc-head-002
-robtest1234@hpc-head-002's password:
+robtest1234@ssh-bastion-6:~$ ssh hpc-jobs-001
+robtest1234@hpc-jobs-001's password:
 Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-200-generic x86_64)
 ...
-robtest1234@hpc-head-002:~$
+robtest1234@hpc-jobs-001:~$
 ```
 
-In the above example, I connected to Orca and then to hpc-head-002 in two separate steps. However, it's possible to do it in a single command, like this: 
+In the above example, I connected to Orca and then to hpc-jobs-001 in two separate steps. However, it's possible to do it in a single command, like this: 
 ```
 ssh -J <username>@orca.nhm.ac.uk <username>@<destination_server>
 ```
 
-For example, this is how I would connect from my computer to hpc-head-002 via Orca in a single command:
+For example, this is how I would connect from my computer to hpc-jobs-001 via Orca in a single command:
 
 ```
-PS C:\Users\robef3> ssh -J robtest1234@orca.nhm.ac.uk robtest1234@hpc-head-002
+PS C:\Users\robef3> ssh -J robtest1234@orca.nhm.ac.uk robtest1234@hpc-jobs-001
 -----------------------------------------------------------
 ---  This is the Natural History Museum in London, UK.  ---
 ---  If you are not an authorised user GO NO FURTHER !  ---
@@ -132,17 +134,20 @@ PS C:\Users\robef3> ssh -J robtest1234@orca.nhm.ac.uk robtest1234@hpc-head-002
 -----------------------------------------------------------
 (robtest1234@orca.nhm.ac.uk) Password:
 (robtest1234@orca.nhm.ac.uk) Verification code:
-robtest1234@hpc-head-002's password:
+robtest1234@hpc-jobs-001's password:
 Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-200-generic x86_64)
 ...
-robtest1234@hpc-head-002:~$
+robtest1234@hpc-jobs-001:~$
 ```
- 
-### Using SCP
+### SCP's and SFTP's 
 
-You can use SCP to transfer files through orca to your destination server. This can be done with a graphical program like [WinSCP](#winscp), or via the [Terminal](#terminal).
+There are two common ways to transfer files to a remote server: SCP (Secure Copy) is a simple command-line tool for copying files. SFTP (SSH File Transfer Protocol) is more fully featured and is used by graphical tools like FileZilla and Cyberduck. WinSCP supports both protocols and is covered in the SCP section below, where it is configured to use SCP.
 
-#### WinSCP
+#### Using SCP
+
+You can use SCP to transfer files through orca to your destination server. This can be done with a graphical program like [WinSCP](https://winscp.net/eng/docs/introduction), or via the [Terminal](#terminal).
+
+##### WinSCP
 
 You can use WinSCP on a Windows machine to transfer files to and from a remote server. To do this, open WinSCP and fill in the details like below:
 
@@ -177,17 +182,17 @@ You may need to enter your password a second time, and may see a few prompts tha
  
 ![winscp-files](hpc_images/winscp-files.png) 
 
-#### Terminal
+##### Terminal
 
-To use SCP to copy a file from your computer through orca to your destination server, use the following syntax:
+To use SCP to copy a file from your local computer through orca to your destination server, use the following syntax:
 ```
 scp -o 'ProxyJump <username>@orca.nhm.ac.uk' myfile <username>@<destination_server>:~/mydir
 ```
 
-This example will upload a file called `myfile` from the local computer to the `/home/robtest1234/mydir` directory on hpc-head-002:
+This example will upload a file called `myfile` from the local computer to the `/home/robtest1234/mydir` directory on hpc-jobs-001:
 
 ```
-$ scp -o 'ProxyJump robtest1234@orca.nhm.ac.uk' myfile robtest1234@hpc-head-002:~/mydir
+$ scp -o 'ProxyJump robtest1234@orca.nhm.ac.uk' myfile robtest1234@hpc-jobs-001:~/mydir
 -----------------------------------------------------------
 ---  This is the Natural History Museum in London, UK.  ---
 ---  If you are not an authorised user GO NO FURTHER !  ---
@@ -202,14 +207,19 @@ $ scp -o 'ProxyJump robtest1234@orca.nhm.ac.uk' myfile robtest1234@hpc-head-002:
 ---  If you have problems connecting, contact :         ---
 ---          ts-servicedesk@nhm.ac.uk                   ---
 -----------------------------------------------------------
-robtest1234@hpc-head-002's password:
+robtest1234@hpc-jobs-001's password:
 myfile                        100%    0     0.0KB/s   00:00
 (sphinx) [robef3@HYB-rF9MA5WUwGJ ~]$
 ```
- 
-### Using SFTP
 
-#### FileZilla or Cyberduck
+To download a file from the destination server to the directory you are currently in on your local computer, you use this command:
+```
+scp -o 'ProxyJump <username>@orca.nhm.ac.uk' <username>@<server>:~/mydir/myfile .
+```
+ 
+#### Using SFTP
+
+##### FileZilla or Cyberduck
 
 If you need to use a graphical SFTP client like FileZilla or Cyberduck, you will need to establish an SSH tunnel via the terminal. This is because FileZilla and Cyberduck do not have built-in tunnelling support (unlike WinSCP). 
 
@@ -220,7 +230,7 @@ ssh -L 8888:<destination_server>:22 <username>@orca.nhm.ac.uk cat -
 
 Enter your password and Authenticator code. For example:
 ```
-$ ssh -L 8888:hpc-head-002:22 robtest123@orca.nhm.ac.uk cat -
+$ ssh -L 8888:hpc-jobs-001:22 robtest123@orca.nhm.ac.uk cat -
 -----------------------------------------------------------
 ---  This is the Natural History Museum in London, UK.  ---
 ---  If you are not an authorised user GO NO FURTHER !  ---
@@ -232,7 +242,7 @@ $ ssh -L 8888:hpc-head-002:22 robtest123@orca.nhm.ac.uk cat -
 
 ```
 
-The terminal will appear to hang, but this is expected â€“ it means the SSH tunnel has been established. 
+The terminal will appear to hang, but this is expected — it means the SSH tunnel has been established. 
 
 {: .warning }
 > Don't cancel out of it until you have finished your file transfer, otherwise the tunnel will be closed!

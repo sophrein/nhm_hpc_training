@@ -33,9 +33,11 @@ You should now have a terminal which looks like this:
 {: .note }
 > The first time you open the Linux terminal, you will be asked to create a **username** and **password** for your Linux environment. These are separate from your Windows login. The password will not appear on screen as you type (this is normal). You will need this password whenever you run administrative (`sudo`) commands.
 
-Windows also comes with an application called Terminal, which allows you to select an Ubuntu terminal.
+Windows also comes with an application called Terminal, this application allows you to select an Ubuntu terminal on a dropdown menu at the top.
 
 ![Open ubuntu](../images/open_ubuntu.png)
+
+WSL will install Ubuntu by default. You can verify this by running `wsl -l -v` to see your installed distributions. If Ubuntu is not installed by default, you can install it from the Microsoft Store by searching for "Ubuntu".
 
 ### Mac
 

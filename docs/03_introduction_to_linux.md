@@ -57,7 +57,7 @@ Let's try a new command, `mkdir` to **m**a**k**e a new **dir**ectory. A director
 mkdir new_directory
 ```
 
-Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores "_"ùor hypens "-" to separate words. Also avoid special characters such as ' ? , ( ) ! & * + ; etc. 
+Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores "_"or hypens "-" to separate words. Also avoid special characters such as ' ? , ( ) ! & * + ; etc. 
 
 #### List a directory
 
@@ -101,9 +101,9 @@ We can also use `pwd` again to check our present working directory.
 
 {: .note }
 > **Handy keyboard shortcuts**
-> - **Tab** ó autocomplete a file or directory name
-> - **? / ? arrow keys** ó scroll through your command history
-> - **Ctrl + C** ó cancel a running command
+> - **Tab** ‚Äî autocomplete a file or directory name
+> - **? / ? arrow keys** ‚Äî scroll through your command history
+> - **Ctrl + C** ‚Äî cancel a running command
 
 ##### Working with directories
 
@@ -167,7 +167,7 @@ cat new_file.txt
 
 Here we can see that the file "new_file.txt", contains the text "Hello World!".
 
-Note that using redirection with ">" overwrites a file. For example, try running the following will change the contents of "new_file.txt"ùand print the output to the terminal.  
+Note that using redirection with ">" overwrites a file. For example, try running the following will change the contents of "new_file.txt"and print the output to the terminal.  
 
 ```
 echo Hello again! > new_file.txt
@@ -243,7 +243,7 @@ rm --help
 rm -h
 ```
 
-Using `-h` or `--help` will print information on the usage and options available for a command. Both `-h` or `--help` do the same thing, option specified with `--` tend to be more verbose and readable than options specified with `-` which tend to be more shorthand. Here we can see an option to "remove directories and their contents recursively"ùwhich can be specified by -r, -R or --recursive. Let's try to remove the directory again. 
+Using `-h` or `--help` will print information on the usage and options available for a command. Both `-h` or `--help` do the same thing, option specified with `--` tend to be more verbose and readable than options specified with `-` which tend to be more shorthand. Here we can see an option to "remove directories and their contents recursively"which can be specified by -r, -R or --recursive. Let's try to remove the directory again. 
 
 ```
 rm -r new_directory
@@ -302,15 +302,15 @@ To exit nano, press the keys "Ctrl + x". To check you changes, you can cat the f
 cat rbcl.fasta
 ```
 
-Let's imagine we wanted to edit the sequence name to something simpler, such as ">arabidopsis_thaliana_rbcl"ù. To do this, open our file using nano again. 
+Let's imagine we wanted to edit the sequence name to something simpler, such as ">arabidopsis_thaliana_rbcl". To do this, open our file using nano again. 
 ```
 nano rbcl.fasta
 ```
-To edit the fasta file, use the cursor keys to move to the first line (your mouse will not work here), and remove the first line by pressing the Delete key and replace with ">arabidopsis_thaliana_rbcl"ù. It should now look like this:
+To edit the fasta file, use the cursor keys to move to the first line (your mouse will not work here), and remove the first line by pressing the Delete key and replace with ">arabidopsis_thaliana_rbcl". It should now look like this:
 
 ![Editing the fasta header in nano](../images/PLACEHOLDER_nano_edited_header.png)
 
-As before, save your changes by pressing "Ctrl + o"ù and hit Enter to confirm the file name. Then exit nano by pressing "Ctrl + x"ù.
+As before, save your changes by pressing "Ctrl + o" and hit Enter to confirm the file name. Then exit nano by pressing "Ctrl + x".
 
 You can check your edit by printing the file to the terminal again:
 ```

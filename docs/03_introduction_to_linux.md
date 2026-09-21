@@ -102,7 +102,7 @@ We can also use `pwd` again to check our present working directory.
 {: .note }
 > **Handy keyboard shortcuts**
 > - **Tab** — autocomplete a file or directory name
-> - **? / ? arrow keys** — scroll through your command history
+> - **↑ / ↓ arrow keys** — scroll through your command history
 > - **Ctrl + C** — cancel a running command
 
 ##### Working with directories

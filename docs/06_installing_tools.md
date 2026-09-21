@@ -45,11 +45,6 @@ Create an environment and install some tools into it:
 ```bash
 conda create -n myproject <tool1> <tool2>
 ```
-For example:
-
-```bash
-conda create -n myproject samtools bwa
-```
 
 Activate your conda environment to use the packages installed:
 
@@ -63,7 +58,8 @@ Leave the environment when finished:
 conda deactivate
 ```
 
-Many bioinformatics tools are distributed through the [Bioconda](https://bioconda.github.io/) channel.
+Bioconda is a channel for the conda package manager that specialises in bioinformatics software. Many tools are distributed through [Bioconda](https://bioconda.github.io/), this allows you to install them with a single `conda install` command rather than compiling from source.
+
 
 **Good for:** quickly installing tools that are available as Conda packages; personal use.
 
@@ -77,7 +73,7 @@ Installation requires administrator rights, so on an HPC cluster Singularity/App
 
 If you need to install it on your own Linux machine, follow the official [Singularity/Apptainer installation guide](https://apptainer.org/docs/admin/main/installation.html).
 
-On the NHM HPC, see the [NHM HPC guide](04_accessing_hpc_resources/nhm_hpc.html#singularityapptainer) for how to access Singularity/Apptainer.
+On the NHM HPC, see the [NHM HPC guide](04_accessing_hpc_resources/nhm_hpc.md#singularityapptainer) for how to access Singularity/Apptainer.
 
 You can verify it is available with:
 

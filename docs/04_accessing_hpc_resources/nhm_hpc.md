@@ -347,7 +347,7 @@ smb: \share\workspaces\groups\rob-project-2\> exit
 |--------|----------|-----------------------|
 | scp    | Simple one-off transfers of files or folders | Yes |
 | sftp   | Browsing the cluster filesystem interactively while transferring files | Yes |
-| rsync  | Large transfers or syncing folders — only copies files that have changed | Yes |
+| rsync  | Large transfers or syncing folders, only copies files that have changed | Yes |
 | smb    | Accessing cluster storage like a network drive via File Explorer or Finder | No - though it can also be accessed via command line |
 
 ---
@@ -1120,7 +1120,7 @@ The cluster has four GPUs in total:
 - 2 x NVIDIA Tesla V100 32GB
 - 2 x NVIDIA A2 16GB
 
-By default, using `--gres=gpu` will allocate any available GPU. If your job requires a specific GPU type, you can request one using the `--gres` flag — contact [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) for the exact options.
+By default, using `--gres=gpu` will allocate any available GPU. If your job requires a specific GPU type, you can request one using the `--gres` flag, contact [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) for the exact options.
 
 ```
 #SBATCH --gres=gpu

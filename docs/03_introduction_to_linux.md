@@ -35,7 +35,7 @@ In this example, the command is `echo` and the argument is `Hello World!`. The o
 
 ![Hello World](../images/hello_world.png)
  
-As you can see, it has printed the text "Hello World!"ù to the terminal. 
+As you can see, it has printed the text "Hello World!" to the terminal. 
 
 #### Print working directory
 
@@ -51,13 +51,13 @@ This command prints our location in the Linux system. When we log in, we always 
 
 #### Make a directory
 
-Let's try a new command, `mkdir` to **m**a**k**e a new **dir**ectory. A directory is just another name for a folder. We will call our new directory "new_directory"ù. 
+Let's try a new command, `mkdir` to **m**a**k**e a new **dir**ectory. A directory is just another name for a folder. We will call our new directory "new_directory". 
 
 ```
 mkdir new_directory
 ```
 
-Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores "_"ù or hypens "-" to separate words. Also avoid special characters such as ' ? , ( ) ! & * + ; etc. 
+Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores "_"ùor hypens "-" to separate words. Also avoid special characters such as ' ? , ( ) ! & * + ; etc. 
 
 #### List a directory
 
@@ -115,7 +115,7 @@ As we have already seen, to change to a directory one below you are in, just use
 cd subdir_name
 ```
 
-To change directory to the one above your are in, use the shorthand for "the directory above"ù `..`
+To change directory to the one above your are in, use the shorthand for "the directory above" `..`
 
 ```
 cd ..
@@ -165,16 +165,16 @@ Now that we have created a new file and can see it is in our working directory, 
 cat new_file.txt
 ```
 
-Here we can see that the file "new_file.txt"ù, contains the text "Hello World!"ù.
+Here we can see that the file "new_file.txt", contains the text "Hello World!".
 
-Note that using redirection with ">"ù overwrites a file. For example, try running the following will change the contents of "new_file.txt"ù and print the output to the terminal.  
+Note that using redirection with ">" overwrites a file. For example, try running the following will change the contents of "new_file.txt"ùand print the output to the terminal.  
 
 ```
 echo Hello again! > new_file.txt
 cat new_file.txt
 ```
 
-However, if we use redirection with ">>"ù, it appends new lines to a file. Try the follow for example. 
+However, if we use redirection with ">>", it appends new lines to a file. Try the follow for example. 
 ```
 echo Hello World! > new_file.txt
 echo Hello Again! >> new_file.txt
@@ -243,7 +243,7 @@ rm --help
 rm -h
 ```
 
-Using `-h` or `--help` will print information on the usage and options available for a command. Both `-h` or `--help` do the same thing, option specified with `--` tend to be more verbose and readable than options specified with `-` which tend to be more shorthand. Here we can see an option to "remove directories and their contents recursively"ù which can be specified by -r, -R or --recursive. Let's try to remove the directory again. 
+Using `-h` or `--help` will print information on the usage and options available for a command. Both `-h` or `--help` do the same thing, option specified with `--` tend to be more verbose and readable than options specified with `-` which tend to be more shorthand. Here we can see an option to "remove directories and their contents recursively"ùwhich can be specified by -r, -R or --recursive. Let's try to remove the directory again. 
 
 ```
 rm -r new_directory
@@ -254,7 +254,7 @@ Now the directory has been removed. **Note, once you remove a file or directory 
 #### Creating text files with nano
 It is possible to create and edit files using text editors in Linux. For the training, we will use `nano` although there are lots of different options available.
 
-Let's create a new text file called "rbcl.fasta"ù using nano.
+Let's create a new text file called "rbcl.fasta" using nano.
 
 ```
 nano rbcl.fasta
@@ -293,11 +293,11 @@ Once you have pasted the text, it will look like this:
 
 ![The fasta sequence pasted into nano](../images/PLACEHOLDER_nano_pasted.png)
 
-Once we are finished editing, we can save our text file by pressing the keys "Ctrl + o"ù. 
+Once we are finished editing, we can save our text file by pressing the keys "Ctrl + o". 
 
-Nano will ask you if you would like to write the file to "rbcl.fasta"ù. Hit the Enter key to save to this file. 
+Nano will ask you if you would like to write the file to "rbcl.fasta". Hit the Enter key to save to this file. 
 
-To exit nano, press the keys "Ctrl + x"ù. To check you changes, you can cat the file again: 
+To exit nano, press the keys "Ctrl + x". To check you changes, you can cat the file again: 
 ```
 cat rbcl.fasta
 ```

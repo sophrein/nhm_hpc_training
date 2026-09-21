@@ -48,4 +48,4 @@ This HPC  supports the computational needs of researchers from six UK institutio
 
 Crop Diversity is used for all types of computational analysis and has a wide range of computational resources for different needs. **Note that Crop Diversity uses a SLURM job scheduler.**
 
-Crop Diversity is used by a large community of researchers and the slack channel (cropdiversity-hpc.slack.com) is usually the best place to contact for issues related to Crop Diversity. 
+Crop Diversity is used by a large community of researchers and the slack channel (cropdiversity-hpc.slack.com) is usually the best place to contact for any issues. 

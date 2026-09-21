@@ -46,7 +46,7 @@ echo "Running on $SLURM_NODELIST"
 
 Submit it with `sbatch my_script.sh`. The exact options and partition names differ between clusters, so always check the local documentation.
 
-By default, an output log file is written to slurm-<jobid>.out in the directory you submitted from, which will include any errors from running the script.
+By default, an output log file is written to 'slurm-<jobid>.out' in the directory you submitted from, which will include any errors from running the script.
 
 ## Using SLURM etiquette
 
@@ -68,3 +68,5 @@ A cluster is a **shared** resource. Being a considerate user keeps the system re
 - **DON'T leave interactive sessions idle.** Interactive sessions hold resources for as long as they are open — close them when you have finished.
 
 If in doubt about the right resources for a job, ask on your cluster's support channel (see [Getting help](07_getting_help.md)).
+
+If you want to learn more about SLURM, the official documentation includes a [cheat sheet](https://slurm.schedmd.com/pdfs/summary.pdf) covering the most commonly used commands and options.

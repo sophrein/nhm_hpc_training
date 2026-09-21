@@ -17,9 +17,10 @@ nav_order: 4
 ---
 
 ## What is Orca?
+
 Most NHM servers are inaccessible from outside the NHM network unless you are connected to the VPN on an NHM laptop. Orca provides a solution to this issue.
 
-SSH (Secure Shell) is a protocol for securely connecting to a remote computer from your terminal. Most NHM servers are inaccessible from outside the NHM network unless you are connected to the VPN on an NHM laptop. Orca acts as a bastion server, a secure gateway that allows you to reach internal NHM servers from outside the network.
+Orca acts as a bastion server, a secure gateway that allows you to reach internal NHM servers from outside the network.
 
 To connect to Orca, use an SSH client such as PuTTy or Terminal. Once connected, you can access servers within the NHM network, such as:
 
@@ -216,6 +217,9 @@ To download a file from the destination server to the directory you are currentl
 ```
 scp -o 'ProxyJump <username>@orca.nhm.ac.uk' <username>@<server>:~/mydir/myfile .
 ```
+
+{: .note }
+> The download command must be run from a terminal on your **local computer**, not from a terminal where you are already connected to the server. Open a new terminal window on your local machine before running it.
  
 #### Using SFTP
 

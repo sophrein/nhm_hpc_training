@@ -10,7 +10,7 @@ There are three main options for accessing HPC resources at the NHM. Each resour
 The three main HPC options are: 
  - [`Franklin and Sanger`](#franklin-and-sanger)
  - [`NHM HPC`](#nhm-hpc)
- - [`Crop Diversity `](#crop-diversity)
+ - [`Crop Diversity`](#crop-diversity)
 
 ### Franklin and Sanger
 {: .fs-9 }
@@ -18,7 +18,7 @@ The three main HPC options are:
 {: .highlight }
 [Franklin and Sanger](http://pgfsites.s3-website-eu-west-1.amazonaws.com/H21/franklin.html) are compute servers for research at the NHM, part of the molecular biology computing facility. 
 
-They are used mainly for phylogenetics, sequence database searching, and molecular sequence analysis. It is set up to be flexible and interactive. **These servers do not use a job scheduler (i.e. SLURM)**. 
+They are used mainly for phylogenetics, sequence database searching, and molecular sequence analysis. Unlike the HPC, these servers allow you to run commands directly in the terminal **without submitting jobs to a scheduler (i.e. SLURM)**. 
 
 It is managed by Peter Foster (p.foster2@gmail.com / p.foster@nhm.ac.uk) who is available for advice on how to use it. 
 
@@ -26,26 +26,26 @@ It is managed by Peter Foster (p.foster2@gmail.com / p.foster@nhm.ac.uk) who is 
 {: .fs-9 }
 
 {: .highlight }
-The NHM HPC is compute server maintained by Technology Solutions (TS).
+The NHM HPC is a compute server maintained by Technology Solutions (TS).
 
-The NHM HPC is used for all types of computational analyses across the museum. **Note that the NHM HPC uses a SLURM job scheduler.**
+The NHM HPC is used for computationally intensive tasks such as running pipelines that require significant CPU, memory, or time. **Note that the NHM HPC uses a SLURM job scheduler.**
 
-Rob Foster (robert.foster2@nhm.ac.uk) is the best contact for issue relating to the NHM HPC. 
+Rob Foster (robert.foster2@nhm.ac.uk) is the best contact for issues relating to the NHM HPC. 
 
 ### Crop Diversity
 {: .fs-9 }
 
 {: .highlight }
-[Crop Diversity](https://help.cropdiversity.ac.uk/) is run and maintained by the James Hutton Institute’s Information & Computational Sciences (ICS) Research Computing team, and the Scientific Computing section of NIAB’s IT team.
+[Crop Diversity](https://help.cropdiversity.ac.uk/) is run and maintained by the James Hutton Institute's Information & Computational Sciences (ICS) Research Computing team, and the Scientific Computing section of NIAB's IT team.
 
-This HPC  supports the computational needs of researchers from six UK institutions including: 
+This HPC supports the computational needs of researchers from six UK institutions including: 
 - The James Hutton Institute (JHI)
 - The National Institute of Agricultural Botany (NIAB)
 - The Natural History Museum (NHM)
 - Royal Botanic Garden Edinburgh (RBGE)
 - Royal Botanic Garden, Kew (RBGK)
-- Scotland’s Rural College (SRUC)
+- Scotland's Rural College (SRUC)
 
 Crop Diversity is used for all types of computational analysis and has a wide range of computational resources for different needs. **Note that Crop Diversity uses a SLURM job scheduler.**
 
-Crop Diversity is used by a large community of researchers and the slack channel (cropdiversity-hpc.slack.com) is usually the best place to contact for issues related to Crop Diversity. 
+Crop Diversity is used by a large community of researchers and the Slack channel (cropdiversity-hpc.slack.com) is usually the best place to contact for any issues. 

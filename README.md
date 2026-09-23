@@ -24,6 +24,19 @@ git checkout -b test_branch
 
 Once you have your own copy of the repo and new branch, you can make changes to the file structure. 
 
+When you have made your changes, stage and commit them:
+
+```
+# stage your changes
+git add .
+
+# commit with a descriptive message
+git commit -m "brief description of your changes"
+
+# push your branch to GitHub
+git push origin your-branch-name
+```
+
 When finished, submit a pull request and the changes will be reviewed before uploading. 
 
 ## Adding new tutorials

@@ -51,7 +51,7 @@ Email [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) to request acc
 
 ### Technical support
 
-Check out the [HPC Users Community](https://teams.microsoft.com/l/channel/19%3A8aa968ad33924f1e9ac3b4a78862eac4%40thread.tacv2/General?groupId=7e89a01f-f1c5-4886-b494-0ac470650c5a>) on Microsoft Teams for assistance from fellow users and cluster admins, as well as the latest news and updates about the cluster. 
+Check out the [HPC Users Community](https://teams.microsoft.com/l/channel/19%3A8aa968ad33924f1e9ac3b4a78862eac4%40thread.tacv2/General?groupId=7e89a01f-f1c5-4886-b494-0ac470650c5a) on Microsoft Teams for assistance from fellow users and cluster admins, as well as the latest news and updates about the cluster. 
 
 You can also contact Technology Solutions via email at [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) and [TS Service Desk Portal](https://nhm-ts.haloitsm.com/portal/home).
 
@@ -61,19 +61,19 @@ You can also contact Technology Solutions via email at [TS-ServiceDesk@nhm.ac.uk
 
 Once access is granted, you can log in using an SSH client such as:
 
-- PuTTy (available on Windows) - click [here](#using-putty) for instructions
+- PuTTY (available on Windows) - click [here](#using-PuTTY) for instructions
 - Terminal (available on Linux, macOS, Windows) - click [here](#using-terminal) for instructions
 
 Use your NHM username and password, which are the same credentials you use to log into your NHM computer, if you have one.
 
 {: .note }
-> If you are on an NHM computer (either at the museum or working remotely via VPN), log in directly to the head node hpc-jobs-001. If you are using a non-NHM computer, you need to connect through the bastion, which is known as **orca**. For detailed instructions on connecting through the orca, click [here](orca.html). 
+> If you are on an NHM computer (either at the museum or working remotely via VPN), log in directly to the head node hpc-jobs-001. If you are using a non-NHM computer, you need to connect through the bastion, which is known as **Orca**. For detailed instructions on connecting through the Orca, click [here](Orca.html). 
 
-### Using PuTTy
+### Using PuTTY
 
-To log in using PuTTy, enter the hostname `hpc-jobs-001` and select **Open**. 
+To log in using PuTTY, enter the hostname `hpc-jobs-001` and select **Open**. 
 
-![putty](hpc_images/putty.png)
+![PuTTY](hpc_images/PuTTY.png)
 
 Enter your username and password at the prompt to log in, and you will be presented with the welcome message:
 ```
@@ -129,7 +129,7 @@ robtest1234@hpc-jobs-001:~$
 
 ## Transferring files
 
-To upload and download data you can use various methods, such as scp, sftp, and rsync. Each method is described below. These instructions assume you are on VPN. If you are not, please see the [orca user guide](orca.html) for instructions on how to transfer files through orca.
+To upload and download data you can use various methods, such as scp, sftp, and rsync. Each method is described below. These instructions assume you are on VPN. If you are not, please see the [Orca user guide](Orca.html) for instructions on how to transfer files through Orca.
 
 - [scp](#scp)
 - [sftp](#sftp)
@@ -265,7 +265,7 @@ total size is 15  speedup is 0.04
   
 ### smb
 
-You can transfer files via smb (also known as *samba* or *cifs*) using. **File Explorer** in Windows or **Finder** in macOS. 
+You can transfer files via smb (also known as *samba* or *cifs*) using **File Explorer** in Windows or **Finder** in macOS. 
 
 To do this via File Explorer, browse to the location of the workspace, such as `\\valentine\mbl\share\workspaces\groups\<folder_name>`.
 
@@ -373,7 +373,7 @@ When you log in, you'll be in your home directory, a personal area only you can 
 
 ### Group/project folders
 
-- **Path**:`/hpc/groups`
+- **Path**: `/hpc/groups`
 - **Backed up**: Daily
 - **Quota**: 2TB
 - **Used for**:
@@ -590,7 +590,7 @@ If you've worked with Docker, then this concept will be familiar to you. Singula
 
 You can create a Singularity image on your own computer, provided you have Singularity installed. Alternatively, you can use the software-building server **hpc-sw-003**, which already has it installed. Email [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) to request access to it. 
 
-Using PuTTy or a terminal, SSH to hpc-sw-003:
+Using PuTTY or a terminal, SSH to hpc-sw-003:
 
 ```
 ssh <username>@hpc-sw-003
@@ -976,7 +976,7 @@ conda activate base
 echo "Starting at `date`"
 echo "Running on hosts: $SLURM_NODELIST"
 echo "Running on $SLURM_NNODES nodes"
-echo "Current workig directory is `pwd`"
+echo "Current working directory is `pwd`"
 
 python python_script.py
 ```
@@ -1126,7 +1126,7 @@ By default, using `--gres=gpu` will allocate any available GPU. If your job requ
 #SBATCH --gres=gpu
 ```
 
-Here is a sample job that makes use of the GPU. Note that only one GPU job per node can run per at a time &ndash; if someone else's job is using the GPU, your job will wait in the queue until theirs is finished.
+Here is a sample job that makes use of the GPU. Note that only one GPU job per node can run at a time &ndash; if someone else's job is using the GPU, your job will wait in the queue until theirs is finished.
 
 ```
 #!/bin/bash

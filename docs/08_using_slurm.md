@@ -22,7 +22,7 @@ A handful of commands cover most day-to-day use:
 | `sbatch script.sh` | Submit a job script to the scheduler. |
 | `squeue -u <username>` | See the status of your own jobs in the queue. |
 | `scancel <job_id>` | Cancel a running or queued job. Your job ID is returned when you run `sbatch`, and is also shown in the output of `squeue`. |
-| `sacct -j <job_id>` | View details of a currenlty running or finished job (including how much memory and time it actually used). |
+| `sacct -j <job_id>` | View details of a currently running or finished job (including how much memory and time it actually used). |
 | `sinfo` | Check the state of the cluster's nodes and partitions. |
 
 ## Partitions (queues)
@@ -46,7 +46,7 @@ echo "Running on $SLURM_NODELIST"
 
 Submit it with `sbatch my_script.sh`. The exact options and partition names differ between clusters, so always check the local documentation.
 
-By default, an output log file is written to 'slurm-<jobid>.out' in the directory you submitted from, which will include any errors from running the script.
+By default, an output log file is written to `slurm-<jobid>.out` in the directory you submitted from, which will include any errors from running the script.
 
 ## Using SLURM etiquette
 

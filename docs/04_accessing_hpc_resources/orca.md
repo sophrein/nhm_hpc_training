@@ -22,7 +22,7 @@ Most NHM servers are inaccessible from outside the NHM network unless you are co
 
 Orca acts as a bastion server, a secure gateway that allows you to reach internal NHM servers from outside the network.
 
-To connect to Orca, use an SSH client such as PuTTy or Terminal. Once connected, you can access servers within the NHM network, such as:
+To connect to Orca, use an SSH client such as PuTTY or Terminal. Once connected, you can access servers within the NHM network, such as:
 
 - franklin
 - sanger
@@ -52,11 +52,11 @@ You can download the app on your smartphone from the App Store (iOS) or the Play
 
 ### Connect to Orca for the first time
 
-This section provides instructions on how to connect to Orca for the first time and set up your multi-factor authentication (MFA). This will be demonstrated using PuTTy (available on Windows) and the standard Terminal (available on Linux, macOS, and Windows). You can also use other SSH software if you prefer.
+This section provides instructions on how to connect to Orca for the first time and set up your multi-factor authentication (MFA). This will be demonstrated using PuTTY (available on Windows) and the standard Terminal (available on Linux, macOS, and Windows). You can also use other SSH software if you prefer.
 
-If using PuTTy, under **Host Name** type `<username>@orca.nhm.ac.uk`. Leave everything else as default and click **Open**. For example:
+If using PuTTY, under **Host Name** type `<username>@orca.nhm.ac.uk`. Leave everything else as default and click **Open**. For example:
 
-![putty-orca](hpc_images/putty-orca.png)
+![PuTTY-orca](hpc_images/PuTTY-orca.png)
 
 Or if using Terminal, type `ssh <username>@orca.nhm.ac.uk`. For example:
 
@@ -87,7 +87,7 @@ You will see a QR code. Scan it with the Authenticator app. At the `Enter code f
 {: .note }
 > If the QR code does not display correctly or is too big for your screen, you will not be able to scan it. Don't worry - you will also see a **secret key**. You can type this into the Authenticator app instead of scanning the QR code. 
 
-Now let's test that it's working. Close your PuTTy or Terminal window and re-open it, then connect again to `orca.nhm.ac.uk`. This time you will be prompted for your password and verification code from the Authenticator app. Enter these details and you will be successfully connected to Orca. For example:
+Now let's test that it's working. Close your PuTTY or Terminal window and re-open it, then connect again to `orca.nhm.ac.uk`. This time you will be prompted for your password and verification code from the Authenticator app. Enter these details and you will be successfully connected to Orca. For example:
 
 ```
 $ ssh robtest1234@orca.nhm.ac.uk
@@ -140,7 +140,7 @@ Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-200-generic x86_64)
 ...
 robtest1234@hpc-jobs-001:~$
 ```
-### SCP's and SFTP's 
+### SCPs and SFTPs 
 
 There are two common ways to transfer files to a remote server: SCP (Secure Copy) is a simple command-line tool for copying files. SFTP (SSH File Transfer Protocol) is more fully featured and is used by graphical tools like FileZilla and Cyberduck. WinSCP supports both protocols and is covered in the SCP section below, where it is configured to use SCP.
 
@@ -175,7 +175,7 @@ Click **Continue** at the authentication banner.
  
 ![winscp-auth-banner](hpc_images/winscp-auth-banner.png)
 
-Enter your verification code from the Authenticator app the click **OK**.
+Enter your verification code from the Authenticator app then click **OK**.
 
 ![winscp-mfa-code](hpc_images/winscp-mfa-code.png) 
 
@@ -185,7 +185,7 @@ You may need to enter your password a second time, and may see a few prompts tha
 
 ##### Terminal
 
-To use SCP to copy a file from your local computer through orca to your destination server, use the following syntax:
+To use SCP to copy a file from your local computer through Orca to your destination server, use the following syntax:
 ```
 scp -o 'ProxyJump <username>@orca.nhm.ac.uk' myfile <username>@<destination_server>:~/mydir
 ```
@@ -276,6 +276,6 @@ Once you are done, go back to your terminal and close the SSH tunnel by pressing
 
 If you are unable to login (password not working, Authenticator code not working, etc.) then email [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk). 
 
-Alternatively, post a message in the [HPC Users Community](https://teams.microsoft.com/l/channel/19%3A8aa968ad33924f1e9ac3b4a78862eac4%40thread.tacv2/General?groupId=7e89a01f-f1c5-4886-b494-0ac470650c5a>) Teams group and TS will assist.
+Alternatively, post a message in the [HPC Users Community](https://teams.microsoft.com/l/channel/19%3A8aa968ad33924f1e9ac3b4a78862eac4%40thread.tacv2/General?groupId=7e89a01f-f1c5-4886-b494-0ac470650c5a) Teams group and TS will assist.
 
 

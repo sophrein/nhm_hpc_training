@@ -35,7 +35,7 @@ To connect to Orca, use an SSH client such as PuTTy or Terminal. Once connected,
 Access to Orca must be granted by Technology Solutions. Email [TS-ServiceDesk@nhm.ac.uk](mailto:TS-ServiceDesk@nhm.ac.uk) to request access.
 
 {: .note }
-> If you're using an NHM computer, you don't need to use Orca — use VPN instead.
+> If you're using an NHM computer, you don't need to use Orca - use VPN instead.
  
 ---
 
@@ -246,7 +246,7 @@ $ ssh -L 8888:hpc-jobs-001:22 robtest123@orca.nhm.ac.uk cat -
 
 ```
 
-The terminal will appear to hang, but this is expected — it means the SSH tunnel has been established. 
+The terminal will appear to hang, but this is expected - it means the SSH tunnel has been established. 
 
 {: .warning }
 > Don't cancel out of it until you have finished your file transfer, otherwise the tunnel will be closed!

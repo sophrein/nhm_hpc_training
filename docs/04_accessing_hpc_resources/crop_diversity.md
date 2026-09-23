@@ -25,8 +25,8 @@ Once you have an account, you can [get connected](https://help.cropdiversity.ac.
 
 How you connect depends on where you are:
 
-- **On site or on your institution's VPN** — if you are at a [supported institution](https://help.cropdiversity.ac.uk/organizations.html), you can connect directly using your password, either via the [terminal](https://help.cropdiversity.ac.uk/ssh-terminal-pw.html) or a [graphical client](https://help.cropdiversity.ac.uk/ssh-graphical-pw.html).
-- **Off site** — you must use key authentication with an `ssh` key pair and 2FA, either via the [terminal](https://help.cropdiversity.ac.uk/ssh-terminal-keys.html) or a [graphical client](https://help.cropdiversity.ac.uk/ssh-graphical-keys.html).
+- **On site or on your institution's VPN** - if you are at a [supported institution](https://help.cropdiversity.ac.uk/organizations.html), you can connect directly using your password, either via the [terminal](https://help.cropdiversity.ac.uk/ssh-terminal-pw.html) or a [graphical client](https://help.cropdiversity.ac.uk/ssh-graphical-pw.html).
+- **Off site** - you must use key authentication with an `ssh` key pair and 2FA, either via the [terminal](https://help.cropdiversity.ac.uk/ssh-terminal-keys.html) or a [graphical client](https://help.cropdiversity.ac.uk/ssh-graphical-keys.html).
 
 ## Storage
 

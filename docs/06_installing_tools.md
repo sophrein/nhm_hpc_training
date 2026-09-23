@@ -140,4 +140,4 @@ ml purge
 | Singularity/Apptainer | You need a reproducible, portable environment, or the software is hard to install directly. |
 | Environment modules | The software is already provided and maintained on the cluster. |
 
-These approaches are not mutually exclusive — it is common, for example, to load a module for one tool while using a Conda environment for another.
+These approaches are not mutually exclusive - it is common, for example, to load a module for one tool while using a Conda environment for another.

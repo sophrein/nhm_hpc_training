@@ -17,7 +17,7 @@ Bioinformatics work usually depends on a range of specialised software. On a sha
 
 ### Installing Conda
 
-Conda may already be available on the cluster you are using so check the relevant documentation. On the NHM HPC, documentation on how to install Conda is here [NHM HPC guide](04_accessing_hpc_resources/nhm_hpc.md#installing-conda).
+Conda may already be available on the cluster you are using so check the relevant documentation. On the NHM HPC, documentation on how to install Conda can be found in the [NHM HPC guide](04_accessing_hpc_resources/nhm_hpc.md#installing-conda).
 
 Downloading and installing [Miniconda](https://www.anaconda.com/docs/getting-started/concepts/anaconda-or-miniconda#miniconda) (a lightweight version of Conda):
 
@@ -58,7 +58,7 @@ Leave the environment when finished:
 conda deactivate
 ```
 
-Bioconda is a channel for the conda package manager that specialises in bioinformatics software. Many tools are distributed through [Bioconda](https://bioconda.github.io/), this allows you to install them with a single `conda install` command rather than compiling from source.
+Many tools are distributed through [Bioconda](https://bioconda.github.io/), a channel for the conda package manager that specialises in bioinformatics software, allowing you to install them with a single `conda install` command rather than compiling from source.
 
 
 **Good for:** quickly installing tools that are available as Conda packages; personal use.
@@ -83,12 +83,12 @@ apptainer --version
 
 ### Typical workflow:
 
-pull an existing image from a container registry:
+Pull an existing image from a container registry:
 
 ```bash
 singularity pull docker://biocontainers/samtools
 ```
-By default, the container cannot see files outside of it - use --bind to make a directory (with data you want to reference) visible inside the container, then run your command:
+By default, the container cannot see files outside of it, use `--bind` to make a directory (with data you want to reference) visible inside the container, then run your command:
 
 ```bash
 singularity run --bind /path/to/data samtools_latest.sif <your command> /path/to/data/<yourfile>

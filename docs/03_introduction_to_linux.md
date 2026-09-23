@@ -15,7 +15,7 @@ Linux is an open-source operating system that has become a powerful tool for res
 
 ### Basic introduction to Linux
 
-With a Linux terminal, sometimes called a _command prompt_, _console_, or _command-line interface_ you interact with your computer using only text entered via the keyboard, which is executed by hitting the return key. 
+With a Linux terminal, sometimes called a _command prompt_, _console_, or _command-line interface_, you interact with your computer using only text entered via the keyboard, which is executed by hitting the return key. 
 
 There are hundreds of different commands, but don't worry, you only need a handful of commands to get started. Generally, commands follow the format below:
 
@@ -57,7 +57,7 @@ Let's try a new command, `mkdir` to **m**a**k**e a new **dir**ectory. A director
 mkdir new_directory
 ```
 
-Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores "_"or hypens "-" to separate words. Also avoid special characters such as ' ? , ( ) ! & * + ; etc. 
+Note, when naming files or directories, it is best to avoid spaces. Instead, use underscores "_" or hypens "-" to separate words. Also avoid special characters such as ' ? , ( ) ! & * + ; etc. 
 
 #### List a directory
 
@@ -73,7 +73,7 @@ Your output should show that your new directory has been created.
 
 This command shows us all the files and directories in our present working directory. Note that your home directory will look different to mine, but it should contain a directory called 'new_directory'. 
 
-Let's now look an example of using the `ls` command with the option `-l` which lists files in long format. Enter the command below: 
+Let's now look at an example of using the `ls` command with the option `-l` which lists files in long format. Enter the command below: 
 
 ```
 ls -l
@@ -83,7 +83,7 @@ The output should look like this, with one file or directory per line and additi
 
 ![lsl](../images/ls-l.png)
 
-the **link count** is the number of references pointing to that file or directory in the filesystem.
+The **link count** is the number of references pointing to that file or directory in the filesystem.
 
 #### Changing directory
 
@@ -115,7 +115,7 @@ As we have already seen, to change to a directory one below you are in, just use
 cd subdir_name
 ```
 
-To change directory to the one above your are in, use the shorthand for "the directory above" `..`
+To change directory to the one above you are in, use the shorthand for "the directory above" `..`
 
 ```
 cd ..
@@ -174,7 +174,7 @@ echo Hello again! > new_file.txt
 cat new_file.txt
 ```
 
-However, if we use redirection with ">>", it appends new lines to a file. Try the follow for example. 
+However, if we use redirection with ">>", it appends new lines to a file. Try the following for example. 
 ```
 echo Hello World! > new_file.txt
 echo Hello Again! >> new_file.txt
@@ -207,7 +207,7 @@ mv another_file.txt new_directory/renamed_file.txt
 
 #### Copying files
 
-If we want to create a copy of a file, we can use the cp which stands for copy. Like the move command, it takes an input file and output file.
+If we want to create a copy of a file, we can use the `cp` which stands for copy. Like the move command, it takes an input file and output file.
 ```
 cp another_file.txt another_copy.txt
 ls
@@ -215,7 +215,7 @@ ls
  
 #### Removing files 
 
-Let's say we are happy with our Linux practice so far and we are ready to start clearing up directory. We can use the `rm` command to **r**e**m**ove unwanted files. 
+Let's say we are happy with our Linux practice so far and we are ready to start clearing up our directory. We can use the `rm` command to **r**e**m**ove unwanted files. 
 ```
 rm another_file.txt
 rm another_copy.txt
@@ -235,7 +235,7 @@ We can then try to remove our directory with the following command:
 ```
 rm new_directory
 ```
-However, we should get an error message which say's we cannot remove `new_directory` because it is a directory. 
+However, we should get an error message which says we cannot remove `new_directory` because it is a directory. 
 
 But this is no problem. To remove directories, we need to specify a special option. To see all options available for a command we can look at the help information using options `-h` or `--help`. Try the commands below, both will have the same output: 
 ```
@@ -243,7 +243,7 @@ rm --help
 rm -h
 ```
 
-Using `-h` or `--help` will print information on the usage and options available for a command. Both `-h` or `--help` do the same thing, option specified with `--` tend to be more verbose and readable than options specified with `-` which tend to be more shorthand. Here we can see an option to "remove directories and their contents recursively"which can be specified by -r, -R or --recursive. Let's try to remove the directory again. 
+Using `-h` or `--help` will print information on the usage and options available for a command. Both `-h` and `--help` do the same thing, option specified with `--` tend to be more verbose and readable than options specified with `-` which tend to be more shorthand. Here we can see an option to "remove directories and their contents recursively" which can be specified by -r, -R or --recursive. Let's try to remove the directory again. 
 
 ```
 rm -r new_directory
@@ -264,7 +264,7 @@ The nano command takes the name of the file that you want to create or edit as a
 
 ![The nano text editor](../images/PLACEHOLDER_nano_empty.png)
 
-Let's paste in some sequence information. Below is a fasta file for the rbcL gene in *Arabidopsis thaliana*. Copy this and paste it into the nano text editor. Note, to paste text into a terminal, right click the terminal where you want to paste the text. You can also paste text using the keys "Ctrl + V" in Windows or "Command + V" in Mac.
+Let's paste in some sequence information. Below is a fasta file for the rbcL gene in *Arabidopsis thaliana*. Copy this and paste it into the nano text editor. Note, to paste text into a terminal, right-click the terminal where you want to paste the text. You can also paste text using the keys "Ctrl + V" in Windows or "Command + V" in Mac.
 ```
 >NC_000932.1:54958-56397 Arabidopsis thaliana chloroplast, complete genome
 ATGTCACCACAAACAGAGACTAAAGCAAGTGTTGGGTTCAAAGCTGGTGTTAAAGAGTATAAATTGACTT

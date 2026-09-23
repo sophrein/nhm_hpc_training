@@ -4,7 +4,7 @@ layout: default
 nav_order: 2
 ---
 
-Installing Linux on your own computer is a great way to access and start learning the language. Here are some simple ways to access a Linux terminal on Windows and Mac PC's. 
+Installing Linux on your own computer is a great way to access and start learning the language. Here are some simple ways to access a Linux terminal on Windows and Mac PCs. 
 {: .fs-6 .fw-300 }
 
 ### Windows
@@ -21,7 +21,7 @@ _Note: If you are on a museum laptop, you will need to open PowerShell as an Adm
 
 Once WSL is installed, restart your computer. 
 
-To open a Linux terminal, open Powershell and run the following command:
+To open a Linux terminal, open PowerShell and run the following command:
 ```
 wsl
 ```

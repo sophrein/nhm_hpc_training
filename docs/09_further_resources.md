@@ -1,10 +1,10 @@
 ---
-title: Further Resources
+title: Further resources
 layout: default
 nav_order: 9
 ---
 
-## Further Resources
+## Further resources
 
 For useful bioinformatics scripts, tutorials and software covering a range of tasks, see the [NHM Sequencing Facility tools repository](https://github.com/NHM-Sequencing-Facility/tools).
 

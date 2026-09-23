@@ -9,11 +9,11 @@ nav_order: 6
 Bioinformatics work usually depends on a range of specialised software. On a shared HPC system you normally **cannot** install software system-wide (you don't have administrator rights), so instead you install tools into your own space or run them in self-contained environments. This page gives a generalised overview of the three most common approaches. The exact commands vary slightly between clusters, so always check the documentation for the system you are using.
 
 {: .note }
-> For step-by-step, NHM-specific instructions — including installing Conda, building Singularity images, and using the shared software area — see the [Installing software](04_accessing_hpc_resources/nhm_hpc.md#installing-software) section of the NHM HPC guide.
+> For step-by-step, NHM-specific instructions - including installing Conda, building Singularity images, and using the shared software area - see the [Installing software](04_accessing_hpc_resources/nhm_hpc.md#installing-software) section of the NHM HPC guide.
 
 ## 1. Conda (package and environment manager)
 
-[Conda](https://docs.conda.io/en/latest/) is the most common way to install bioinformatics software without needing administrator rights. It downloads pre-built packages and manages **environments** — isolated collections of software packages — so that different projects can use different tools and versions without conflicting.
+[Conda](https://docs.conda.io/en/latest/) is the most common way to install bioinformatics software without needing administrator rights. It downloads pre-built packages and manages **environments** - isolated collections of software packages - so that different projects can use different tools and versions without conflicting.
 
 ### Installing Conda
 
@@ -65,7 +65,7 @@ Bioconda is a channel for the conda package manager that specialises in bioinfor
 
 ## 2. Singularity / Apptainer (containers)
 
-[Singularity](https://apptainer.org/documentation/) (also known as Apptainer) lets you run software inside a **container** — a self-contained image that bundles a tool together with all of its dependencies. Containers are portable (you can move the same image between your computer and different clusters), reproducible, and shareable with colleagues. Singularity is preferred over Docker on HPC systems because it can be run without administrator rights.
+[Singularity](https://apptainer.org/documentation/) (also known as Apptainer) lets you run software inside a **container** - a self-contained image that bundles a tool together with all of its dependencies. Containers are portable (you can move the same image between your computer and different clusters), reproducible, and shareable with colleagues. Singularity is preferred over Docker on HPC systems because it can be run without administrator rights.
 
 ### Installing Singularity
 
@@ -88,7 +88,7 @@ pull an existing image from a container registry:
 ```bash
 singularity pull docker://biocontainers/samtools
 ```
-By default, the container cannot see files outside of it — use --bind to make a directory (with data you want to reference) visible inside the container, then run your command:
+By default, the container cannot see files outside of it - use --bind to make a directory (with data you want to reference) visible inside the container, then run your command:
 
 ```bash
 singularity run --bind /path/to/data samtools_latest.sif <your command> /path/to/data/<yourfile>

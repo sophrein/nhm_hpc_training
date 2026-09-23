@@ -46,8 +46,3 @@ If you would like to create your own tutorial, just create a new markdown file i
 ## Images
 
 All images can be placed in the images directory.
-
-## Further Resources
-
-- More details on useful bioinfrmatics scripts, tutorials and software for a range of different tasks is [here](https://github.com/NHM-Sequencing-Facility/tools)
-- Details of the available biological databases hosted on the NHM HPC cluster is [here](https://github.com/NHM-Sequencing-Facility/databases)

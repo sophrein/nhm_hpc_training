@@ -10,7 +10,7 @@ There are three main options for accessing HPC resources at the NHM. Each resour
 The three main HPC options are: 
  - [`Franklin and Sanger`](#franklin-and-sanger)
  - [`NHM HPC`](#nhm-hpc)
- - [`Crop Diversity `](#crop-diversity)
+ - [`Crop Diversity`](#crop-diversity)
 
 ### Franklin and Sanger
 {: .fs-9 }
@@ -26,11 +26,11 @@ It is managed by Peter Foster (p.foster2@gmail.com / p.foster@nhm.ac.uk) who is 
 {: .fs-9 }
 
 {: .highlight }
-The NHM HPC is compute server maintained by Technology Solutions (TS).
+The NHM HPC is a compute server maintained by Technology Solutions (TS).
 
 The NHM HPC is used for computationally intensive tasks such as running pipelines that require significant CPU, memory, or time. **Note that the NHM HPC uses a SLURM job scheduler.**
 
-Rob Foster (robert.foster2@nhm.ac.uk) is the best contact for issue relating to the NHM HPC. 
+Rob Foster (robert.foster2@nhm.ac.uk) is the best contact for issues relating to the NHM HPC. 
 
 ### Crop Diversity
 {: .fs-9 }
@@ -38,7 +38,7 @@ Rob Foster (robert.foster2@nhm.ac.uk) is the best contact for issue relating to 
 {: .highlight }
 [Crop Diversity](https://help.cropdiversity.ac.uk/) is run and maintained by the James Hutton Institute's Information & Computational Sciences (ICS) Research Computing team, and the Scientific Computing section of NIAB's IT team.
 
-This HPC  supports the computational needs of researchers from six UK institutions including: 
+This HPC supports the computational needs of researchers from six UK institutions including: 
 - The James Hutton Institute (JHI)
 - The National Institute of Agricultural Botany (NIAB)
 - The Natural History Museum (NHM)
@@ -48,4 +48,4 @@ This HPC  supports the computational needs of researchers from six UK institutio
 
 Crop Diversity is used for all types of computational analysis and has a wide range of computational resources for different needs. **Note that Crop Diversity uses a SLURM job scheduler.**
 
-Crop Diversity is used by a large community of researchers and the slack channel (cropdiversity-hpc.slack.com) is usually the best place to contact for any issues. 
+Crop Diversity is used by a large community of researchers and the Slack channel (cropdiversity-hpc.slack.com) is usually the best place to contact for any issues. 

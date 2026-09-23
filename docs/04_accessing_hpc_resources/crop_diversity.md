@@ -32,7 +32,7 @@ How you connect depends on where you are:
 
 Crop Diversity has storage quotas, so it is worth being aware of how much space you are using. See the [storage documentation](https://help.cropdiversity.ac.uk/data-storage.html) for details on quotas and where to store your data.
 
-## Useful Features
+## Useful features
 
 ### Database mirrors
 
